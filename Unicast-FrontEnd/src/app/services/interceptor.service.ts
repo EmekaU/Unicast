@@ -21,7 +21,7 @@ export class InterceptorService implements HttpInterceptor {
       headers: new HttpHeaders({ 'Content-Type': 'application/json'})
     };
 
-    if(token !+ null){
+    if(token != null){
       request.headers.append('token', token)
     }
 

@@ -6,6 +6,10 @@ import { Observable, of } from 'rxjs';
 
 const URL = "http://localhost:8080" ;
 
+const httpOptions = {
+  headers: new HttpHeaders({ 'Content-Type': 'application/json'})
+};
+
 @Injectable({
   providedIn: 'root'
 })
@@ -14,30 +18,30 @@ export class UserAPIService{
 
   constructor(private http: HttpClient){}
 
-  signUpUser(user: User): Observable<HttpResponse<any>>{
+  signUpUser(user: User){
 
-    return this.http.post<string>(`${URL}/user/create`, JSON.stringify(user), {observe: 'response'})
+    return this.http.post<string>(`${URL}/user/create`, JSON.stringify(user), {responseType: 'text' as 'json'})
   }
 
-  // signInUser(user: User): Observable<string>{
+  signInUser(user: User): Observable<string>{
 
-  //   return this.http.get<string>(`${URL}/user/login`, httpOptions)
-  // }
+    return this.http.get<string>(`${URL}/user/login`, {responseType: 'text' as 'json'})
+  }
 
-  // updateUser(user: User): Observable<string>{
+  updateUser(user: User): Observable<string>{
 
-  //   return this.http.get<string>(`${URL}/user/update`, httpOptions)
-  // }
+    return this.http.get<string>(`${URL}/user/update`, httpOptions)
+  }
 
-  // deleteUser(user: User): Observable<string>{
+  deleteUser(user: User): Observable<string>{
 
-  //   return this.http.get<string>(`${URL}/user/update`, httpOptions)
-  // }
+    return this.http.get<string>(`${URL}/user/update`, httpOptions)
+  }
 
-  // getUser(username: string):Observable<string>{
+  getUser(username: string):Observable<string>{
 
-  //   return this.http.get<string>(`${URL}/get/${username}`, httpOptions)
-  // }
+    return this.http.get<string>(`${URL}/get/${username}`, httpOptions)
+  }
 
 }
 

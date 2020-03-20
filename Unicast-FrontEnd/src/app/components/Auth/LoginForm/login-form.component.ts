@@ -20,14 +20,10 @@ export class LoginFormComponent implements OnInit {
   onSignUp(form: NgForm){
     let user = new User(form.value.username, form.value.password)
     user.setEmail(form.value.email)
-    console.log(form);
-    console.log(user)
 
-    this.httpUser.signUpUser(user).subscribe( res => {
-      console.log(res.headers)
-      this.auth.saveJWTToLocalStorage(res.headers.get("token"))
+    this.httpUser.signUpUser(user).subscribe( data => {
+      this.auth.saveJWTToLocalStorage(data)
       this.auth.printToken()
-      console.log(this.auth.getDecodedAccessToken(res.headers.get("token")))
       this.router.navigate(["/hub"])
       // route to hub or page user redirected from.
     });
