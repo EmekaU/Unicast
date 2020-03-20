@@ -15,7 +15,6 @@ export class LoginFormComponent implements OnInit {
 
   ngOnInit(): void {
 
-    // TODO: Check if user is authenticated, [Utilize Guard]
   }
 
   onSignUp(form: NgForm){

@@ -18,8 +18,12 @@ export class InterceptorService implements HttpInterceptor {
     const token = this.auth.retrieveToken();
 
     const httpOptions = {
-      headers: new HttpHeaders({ 'Content-Type': 'application/json', 'token' : token })
+      headers: new HttpHeaders({ 'Content-Type': 'application/json'})
     };
+
+    if(token !+ null){
+      request.headers.append('token', token)
+    }
 
     request = request.clone(httpOptions)
 
