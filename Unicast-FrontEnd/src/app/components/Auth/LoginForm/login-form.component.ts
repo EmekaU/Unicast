@@ -10,16 +10,12 @@ import { User } from "../../../models/user.model";
   styleUrls: ['./login-form.component.scss']
 })
 export class LoginFormComponent implements OnInit {
-  loginForm: FormGroup
 
   constructor(private httpUser: UserAPIService , private auth: AuthService, private router: Router) { }
 
   ngOnInit(): void {
 
     // TODO: Check if user is authenticated, [Utilize Guard]
-  }
-  onSubmit(): void {
-    console.log(this.loginForm)
   }
 
   onSignUp(form: NgForm){
