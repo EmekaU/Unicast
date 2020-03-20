@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { UserAPIService } from "../../../services/unicast-api.service";
+import { UserAPIService } from "../../services/unicast-api.service";
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
-import { User } from "../../../models/user.model";
+import { User } from "../../models/user.model";
 @Component({
   selector: 'app-login-form',
   templateUrl: './login-form.component.html',
@@ -24,7 +24,7 @@ export class LoginFormComponent implements OnInit {
     this.httpUser.signUpUser(user).subscribe( data => {
       this.auth.saveJWTToLocalStorage(data)
       this.auth.printToken()
-      this.router.navigate(["/hub"])
+      this.router.navigate(["hub"])
       // route to hub or page user redirected from.
     });
 
