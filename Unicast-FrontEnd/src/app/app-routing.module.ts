@@ -1,18 +1,17 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AppComponent } from './app.component';
-import { LoginFormComponent } from './components/loginForm/login-form.component';
 import { HubComponent } from './components/Hub/hub.component';
-import { AuthGuard } from './components/Auth/auth.guard';
-
+import { AuthGuard } from './auth/auth.guard';
+import { SignupComponent } from './components/signup/signup.component';
+import { SigninComponent } from './components/signin/signin.component';
 
 const routes: Routes = [
-  {path: '', component: LoginFormComponent, pathMatch: 'full' },
-  {path: 'login', component: LoginFormComponent},
+  {path: '', redirectTo: 'signup', pathMatch: 'full' },
+  {path: 'signup', component: SignupComponent},
+  {path: 'signin', component: SigninComponent},
   {path: 'hub', component: HubComponent, canActivate: [AuthGuard]},
-  {path: '**', component: LoginFormComponent}
+  {path: '**', redirectTo: ''}
 ];
-
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]

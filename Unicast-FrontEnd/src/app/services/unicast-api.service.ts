@@ -25,7 +25,7 @@ export class UserAPIService{
 
   signInUser(user: User): Observable<string>{
 
-    return this.http.get<string>(`${URL}/user/login`, {responseType: 'text' as 'json'})
+    return this.http.post<string>(`${URL}/user/login`, JSON.stringify(user), {responseType: 'text' as 'json'})
   }
 
   updateUser(user: User): Observable<string>{

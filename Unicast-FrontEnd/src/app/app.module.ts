@@ -2,7 +2,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LoginFormComponent } from './components/loginForm/login-form.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { UserAPIService } from "./services/unicast-api.service";
@@ -12,13 +11,16 @@ import { InterceptorService } from "./services/interceptor.service";
 import { AuthService } from './services/auth.service';
 import { RouterModule } from '@angular/router';
 import { HeaderComponent } from './components/header/header.component';
-import { AuthGuard } from './components/Auth/auth.guard';
+import { AuthGuard } from './auth/auth.guard';
+import { SignupComponent } from './components/signup/signup.component';
+import { SigninComponent } from './components/signin/signin.component';
 @NgModule({
   declarations: [
     AppComponent,
-    LoginFormComponent,
     HubComponent,
     HeaderComponent,
+    SignupComponent,
+    SigninComponent,
   ],
   imports: [
     BrowserModule,
