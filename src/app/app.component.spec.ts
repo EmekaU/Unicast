@@ -32,4 +32,10 @@ describe('AppComponent', () => {
     const compiled = fixture.nativeElement;
     expect(compiled.querySelector('.content span').textContent).toContain('Unicast-FrontEnd app is running!');
   });
+
+  it('should have router-outlet', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    expect(fixture.nativeElement.querySelector('router-outlet')).not.toBeNull();
+
+  })
 });
