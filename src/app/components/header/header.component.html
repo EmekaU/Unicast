@@ -5,7 +5,7 @@
         </div>
         <ul *ngIf="isAuthenticated()" class="navigation">
           <li>
-            <a [routerLink]="['/signout']" routerLinkActive="router-link-active"><li>Logout</li></a>
+            <a [routerLink]="['/signout']" routerLinkActive="active"><li>Logout</li></a>
           </li>
         </ul>
         <ng-template [ngIf]="!isAuthenticated()">
