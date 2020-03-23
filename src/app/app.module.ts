@@ -14,6 +14,8 @@ import { HeaderComponent } from './components/header/header.component';
 import { AuthGuard } from './auth/auth.guard';
 import { SignupComponent } from './components/signup/signup.component';
 import { SigninComponent } from './components/signin/signin.component';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { SubscriptionListComponent } from './components/subscription/subscription-list/subscription-list.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,6 +23,8 @@ import { SigninComponent } from './components/signin/signin.component';
     HeaderComponent,
     SignupComponent,
     SigninComponent,
+    SidebarComponent,
+    SubscriptionListComponent,
   ],
   imports: [
     BrowserModule,

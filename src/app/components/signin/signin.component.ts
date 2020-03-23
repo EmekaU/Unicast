@@ -27,7 +27,7 @@ export class SigninComponent implements OnInit {
     let user = new User(form.value.username, form.value.password)
 
     // TODO: validate
-    this.httpUser.signUpUser(user).subscribe(
+    this.httpUser.signInUser(user).subscribe(
       data => {
         this.auth.saveJWTToLocalStorage(data)
         this.router.navigate([this.returnUrl])

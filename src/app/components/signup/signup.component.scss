@@ -1,0 +1,37 @@
+.form-card{
+  top: 50%;
+  max-width: 350px;
+  padding: 30px 30px;
+  margin: 0 auto;
+  border: 1.5px #eef solid;
+}
+.body{
+  height: 100vh;
+  padding-top: 10px;
+}
+.link:hover{
+  border-bottom: 3px  #5cdb95  solid;
+}
+::-moz-placeholder{
+  color: #000;
+}
+input{
+  background-color: #eee;
+  height: 30px;
+  border: 3px #eef solid;
+  transition: all 0.15s ease 0s;
+}
+
+.auth-btn{
+  background-color: #5cdb95;
+}
+
+input:active,:visited, :focus{
+  background-color: #fff;
+}
+
+:-ms-input-placeholder,
+:-ms-input-placeholder:visited,:focus,:active{
+  color: #eee;
+  background-color: #eee;
+}

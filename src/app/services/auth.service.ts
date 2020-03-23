@@ -26,8 +26,7 @@ export class AuthService {
 
   printToken(){
 
-    let token = localStorage.getItem(TOKEN_KEY);
-    console.log(this.getDecodedAccessToken(token));
+    console.log(this.retrieveToken());
   }
 
   getDecodedAccessToken(token: string): any {
