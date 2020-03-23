@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule , CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
@@ -16,6 +16,7 @@ import { SignupComponent } from './components/signup/signup.component';
 import { SigninComponent } from './components/signin/signin.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { SubscriptionListComponent } from './components/subscription/subscription-list/subscription-list.component';
+import { SearchBarComponent } from './components/search-bar/search-bar.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,6 +26,7 @@ import { SubscriptionListComponent } from './components/subscription/subscriptio
     SigninComponent,
     SidebarComponent,
     SubscriptionListComponent,
+    SearchBarComponent,
   ],
   imports: [
     BrowserModule,
@@ -34,6 +36,7 @@ import { SubscriptionListComponent } from './components/subscription/subscriptio
     RouterModule
   ],
   providers: [UserAPIService, AuthService, AuthGuard, {provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true}],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule { }

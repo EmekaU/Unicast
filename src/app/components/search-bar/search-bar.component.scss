@@ -1,0 +1,23 @@
+.search-box{
+  position: relative;
+  text-align: center;
+  padding: 10px 14px 10px 10px;
+  display: block;
+  width: 340px;
+  border: 2px #eef solid;
+  background-color: #fff;
+}
+
+svg{
+  display: table-cell;
+  height: 25px;
+  width: 25px;
+  padding-left: 5px;
+}
+input.search{
+  display: table-cell;
+  vertical-align: middle;
+  padding: 5px;
+  color: #000;
+}
+

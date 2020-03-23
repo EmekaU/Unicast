@@ -3,6 +3,11 @@
         <div class="logo">
             <h1>UNI<span>CAST</span></h1>
         </div>
+        <ul *ngIf="isAuthenticated()" class="navigation">
+          <li>
+            <a [routerLink]="['/signout']" routerLinkActive="router-link-active"><li>Logout</li></a>
+          </li>
+        </ul>
         <ng-template [ngIf]="!isAuthenticated()">
             <ul class="navigation">
                 <a [routerLink]="['/signin']" routerLinkActive="router-link-active"><li>Login</li></a>
