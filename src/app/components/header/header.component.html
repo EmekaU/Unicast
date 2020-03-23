@@ -1,1 +1,22 @@
-<p>header works!</p>
+<div class="header w-full block">
+    <div class="inner_header">
+        <div class="logo">
+            <h1>UNI<span>CAST</span></h1>
+        </div>
+        <ul *ngIf="isAuthenticated()" class="navigation">
+          <li>
+            <a [routerLink]="['/signout']" routerLinkActive="active"><li>Logout</li></a>
+          </li>
+        </ul>
+        <ng-template [ngIf]="!isAuthenticated()">
+            <ul class="navigation">
+                <a [routerLink]="['/signin']" routerLinkActive="router-link-active"><li>Login</li></a>
+                <a [routerLink]="['/signup']" routerLinkActive="router-link-active"><li>Register</li></a>
+            </ul>
+        </ng-template>
+        <ul class="navigation">
+            <a [routerLink]="['/about']"><li>About</li></a>
+            <a [routerLink]="['/hub']"><li>Hub</li></a>
+        </ul>
+    </div>
+</div>
