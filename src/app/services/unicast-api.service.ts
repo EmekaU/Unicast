@@ -45,4 +45,18 @@ export class UserAPIService{
 
 }
 
+@Injectable({
+  providedIn: 'root'
+})
+
+export class SearchService{
+
+  constructor(private http: HttpClient){}
+
+  wildSearch(query: string){
+
+    return this.http.get<JSON>(`${URL}/search/wild?query=${query}`, {responseType: 'json'})
+  }
+}
+
 

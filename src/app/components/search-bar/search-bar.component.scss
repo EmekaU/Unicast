@@ -1,23 +1,30 @@
+*{
+  outline: none;
+}
+
 .search-box{
-  position: relative;
-  text-align: center;
-  padding: 10px 14px 10px 10px;
-  width: 340px;
+  display: table;
+  padding: 10px 10px;
+  width: 330px;
   border: 2px #eef solid;
   background-color: #fff;
+}
+.search-icon{
+  vertical-align: middle;
 }
 
 svg{
   display: table-cell;
   height: 25px;
-  width: 25px;
-  padding-left: 5px;
+  width: 20px;
+  color: red($color: #cc0000);
 }
 
 input.search{
   display: table-cell;
   vertical-align: middle;
-  padding: 5px;
+  margin-left: 15px;
+  height: 30px;
   color: #000;
 }
 

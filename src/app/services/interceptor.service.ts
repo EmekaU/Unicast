@@ -17,15 +17,28 @@ export class InterceptorService implements HttpInterceptor {
 
     const token = this.auth.retrieveToken();
 
-    const httpOptions = {
-      headers: new HttpHeaders({ 'Content-Type': 'application/json'})
-    };
+    let httpOptions = {}
 
     if(token != null){
-      request.headers.append('token', token)
+      httpOptions = {
+        headers: new HttpHeaders({ 'Content-Type': 'application/json', 'token': token})
+      }
+    }
+    else{
+      httpOptions = {
+        headers: new HttpHeaders({ 'Content-Type': 'application/json'})
+      }
     }
 
+    console.log("Token => " + token)
+
+    // if(token != null){
+    //   httpOptions.headers.append('token', token)
+    // }
+    console.log(httpOptions)
     request = request.clone(httpOptions)
+
+    console.log(request)
 
     return next.handle(request).pipe(
       catchError(error => {

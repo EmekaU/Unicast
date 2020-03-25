@@ -21,6 +21,7 @@ export class SigninComponent implements OnInit {
 
   ngOnInit(): void {
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || 'hub';
+    this.auth.deleteJWTFromLocalStorage();
   }
 
   onSignIn(form: NgForm){

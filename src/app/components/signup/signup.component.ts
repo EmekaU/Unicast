@@ -15,6 +15,7 @@ export class SignupComponent implements OnInit {
   constructor(private httpUser: UserAPIService , private auth: AuthService, private router: Router) { }
 
   ngOnInit(): void {
+    this.auth.deleteJWTFromLocalStorage();
   }
 
   onSignUp(form: NgForm){
