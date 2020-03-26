@@ -18,7 +18,7 @@ export class UserAPIService{
 
   constructor(private http: HttpClient){}
 
-  signUpUser(user: User){
+  signUpUser(user: User):Observable<string>{
 
     return this.http.post<string>(`${URL}/user/create`, JSON.stringify(user), {responseType: 'text' as 'json'})
   }

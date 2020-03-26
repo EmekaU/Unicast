@@ -25,18 +25,6 @@ export class SearchBarComponent implements OnInit, OnDestroy {
 
   SortAndLoadList(a, b){
 
-    if(a == []){
-      return []
-    }
-
-    if(b == []){
-
-    }
-
-    else{
-
-    }
-
   }
 
   ngOnDestroy(){
