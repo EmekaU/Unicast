@@ -22,7 +22,7 @@ export class SignupComponent implements OnInit {
     let user = new User(form.value.username, form.value.password)
     user.setEmail(form.value.email)
 
-    this.httpUser.signInUser(user).subscribe( data => {
+    this.httpUser.signUpUser(user).subscribe( data => {
       this.auth.saveJWTToLocalStorage(data)
       this.auth.printToken()
       this.router.navigate(["hub"])
