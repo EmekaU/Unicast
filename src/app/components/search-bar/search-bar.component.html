@@ -16,7 +16,16 @@
     </form>
     <div class="dropdown-menu"  *ngIf="list != null">
         <li class="dropdown-item" *ngFor="let value of list">
-          {{ value.name - value.type}}
+          <div *ngIf="value.username; else podcast">
+            {{ value.username}}
+            <img src="'data:image/jpeg;base64,'{{value.photo}}"/>
+          </div>
+          <ng-template #podcast>
+            <div>
+              {{ value.title }}
+            </div>
+          </ng-template>
         </li>
     </div>
 </div>
+<!-- <img ng-src="data:image/JPEG;base64,{{image}}"> -->

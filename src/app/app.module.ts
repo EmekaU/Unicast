@@ -17,6 +17,7 @@ import { SigninComponent } from './components/signin/signin.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { SubscriptionListComponent } from './components/subscription/subscription-list/subscription-list.component';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
+import { SanitizePipe } from './Pipes/sanitize.pipe';
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,6 +28,7 @@ import { SearchBarComponent } from './components/search-bar/search-bar.component
     SidebarComponent,
     SubscriptionListComponent,
     SearchBarComponent,
+    SanitizePipe
   ],
   imports: [
     BrowserModule,
@@ -35,7 +37,7 @@ import { SearchBarComponent } from './components/search-bar/search-bar.component
     HttpClientModule,
     RouterModule
   ],
-  providers: [UserAPIService, AuthService, AuthGuard, {provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true}],
+  providers: [UserAPIService, AuthService, AuthGuard, SanitizePipe, {provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true}],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
