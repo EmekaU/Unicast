@@ -18,6 +18,8 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { SubscriptionListComponent } from './components/subscription/subscription-list/subscription-list.component';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
 import { SanitizePipe } from './Pipes/sanitize.pipe';
+import { CommonModule } from '@angular/common';
+import { ImageUtil } from './utilities/image-util';
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,13 +33,14 @@ import { SanitizePipe } from './Pipes/sanitize.pipe';
     SanitizePipe
   ],
   imports: [
+    CommonModule,
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
     RouterModule
   ],
-  providers: [UserAPIService, AuthService, AuthGuard, SanitizePipe, {provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true}],
+  providers: [UserAPIService, AuthService, AuthGuard, SanitizePipe, ImageUtil, {provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true}],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

@@ -12,13 +12,13 @@
         </button>
         </span>
         <input type="text" aria-label="Search" class="search form-control" autocomplete="on" id="search-input" name="query" placeholder="Search" speech ngModel />
-
     </form>
+
     <div class="dropdown-menu"  *ngIf="list != null">
-        <li class="dropdown-item" *ngFor="let value of list">
-          <div *ngIf="value.username; else podcast">
-            {{ value.username}}
-            <img src="'data:image/jpeg;base64,'{{value.photo}}"/>
+        <li class="dropdown-item" *ngFor="let value of list" style="position: relative">
+          <div *ngIf="value.username; else podcast" style="height: 100%">
+            <span>{{ value.username }}</span>
+            <img [src]="getImagePath(value.photo)" style="max-width: 100%; max-height: 100%; display: inline; float: right"/>
           </div>
           <ng-template #podcast>
             <div>
