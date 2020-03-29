@@ -42,8 +42,4 @@ export class User {
     this.photo = photo;
   }
 
-  setPhotoURL(base64String: string){
-    this.photoURL = base64String;
-  }
-
 }

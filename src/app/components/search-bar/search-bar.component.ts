@@ -4,16 +4,23 @@ import { SearchService } from "../../services/unicast-api.service";
 import { Subscription } from 'rxjs';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ImageUtil } from 'src/app/utilities/image-util';
+import { Router, ActivatedRoute } from '@angular/router';
+import { UserService } from 'src/app/services/user.service';
 @Component({
   selector: 'app-search-bar',
   templateUrl: './search-bar.component.html',
   styleUrls: ['./search-bar.component.scss'],
 })
-export class SearchBarComponent implements OnInit, OnDestroy {
+export class SearchBarComponent implements OnInit {
   list:Array<any>
   prefix = 'data:image/jpg;base64,';
   subscription: Subscription;
-  constructor(private searchService: SearchService, private sanitizer: DomSanitizer, private imgUtil: ImageUtil) { }
+  constructor(
+    private searchService: SearchService,
+    private sanitizer: DomSanitizer,
+    private imgUtil: ImageUtil,
+    private router: Router,
+    private userService: UserService) {}
 
   ngOnInit(): void {
   }
@@ -22,7 +29,6 @@ export class SearchBarComponent implements OnInit, OnDestroy {
     this.subscription = this.searchService.wildSearch(f.value.query).subscribe(
       data => {
         this.list = this.SortAndLoadList(data["users"], data["podcasts"]);
-        console.log(this.list);
       },
       error => console.log(error),
       () => console.log("completed")
@@ -35,8 +41,12 @@ export class SearchBarComponent implements OnInit, OnDestroy {
   }
 
   getImagePath(photo: ArrayBuffer){
-    console.log(this.prefix + this.imgUtil.getBase64(photo) + "\n\n")
     return this.sanitizer.bypassSecurityTrustResourceUrl(this.prefix + this.imgUtil.getBase64(photo));
+  }
+
+  redirectToUserProfile(userObject: JSON){
+    this.userService.forwardUser.next(userObject);
+    this.router.navigate([`user-profile/${userObject["username"]}`] ,)
   }
 
   ngOnDestroy(){

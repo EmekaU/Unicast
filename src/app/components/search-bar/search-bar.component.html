@@ -15,17 +15,16 @@
     </form>
 
     <div class="dropdown-menu"  *ngIf="list != null">
-        <li class="dropdown-item" *ngFor="let value of list" style="position: relative">
-          <div *ngIf="value.username; else podcast" style="height: 100%">
-            <span>{{ value.username }}</span>
-            <img [src]="getImagePath(value.photo)" style="max-width: 100%; max-height: 100%; display: inline; float: right"/>
+        <li class="dropdown-item" *ngFor="let object of list" style="position: relative">
+          <div *ngIf="object.username; else podcast" style="height: 100%" (click)="redirectToUserProfile(object)">
+            <span>{{ object.username }}</span>
+            <img [src]="getImagePath(object.photo)" style="max-width: 100%; max-height: 100%; display: inline; float: right"/>
           </div>
           <ng-template #podcast>
             <div>
-              {{ value.title }}
+              {{ object.title }}
             </div>
           </ng-template>
         </li>
     </div>
 </div>
-<!-- <img ng-src="data:image/JPEG;base64,{{image}}"> -->

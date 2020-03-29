@@ -20,6 +20,8 @@ import { SearchBarComponent } from './components/search-bar/search-bar.component
 import { SanitizePipe } from './Pipes/sanitize.pipe';
 import { CommonModule } from '@angular/common';
 import { ImageUtil } from './utilities/image-util';
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
+import { PodcastContainerComponent } from './podcast-container/podcast-container.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,7 +32,9 @@ import { ImageUtil } from './utilities/image-util';
     SidebarComponent,
     SubscriptionListComponent,
     SearchBarComponent,
-    SanitizePipe
+    SanitizePipe,
+    UserProfileComponent,
+    PodcastContainerComponent
   ],
   imports: [
     CommonModule,
