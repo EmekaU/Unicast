@@ -30,12 +30,6 @@ export class InterceptorService implements HttpInterceptor {
       }
     }
 
-    console.log("Token => " + token)
-
-    // if(token != null){
-    //   httpOptions.headers.append('token', token)
-    // }
-    console.log(httpOptions)
     request = request.clone(httpOptions)
 
     console.log(request)
@@ -43,7 +37,7 @@ export class InterceptorService implements HttpInterceptor {
     return next.handle(request).pipe(
       catchError(error => {
         if (error.status === 401) {
-          alert('Access Denied'); // Maybe have a modal here
+          alert('Access Denied'); // TODO: Maybe have a modal here
 
           this.router.navigate(['']); //TODO: or perhaps 404?
           return throwError(error);

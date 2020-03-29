@@ -38,9 +38,9 @@ export class UserAPIService{
     return this.http.get<string>(`${URL}/user/update`, httpOptions)
   }
 
-  getUser(username: string):Observable<string>{
-
-    return this.http.get<string>(`${URL}/get/${username}`, httpOptions)
+  getUser(username: string): Observable<JSON>{
+    console.log(username)
+    return this.http.get<JSON>(`${URL}/user/get/${username}`, {responseType: 'json'})
   }
 
 }

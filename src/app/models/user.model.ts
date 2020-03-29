@@ -2,6 +2,7 @@ export class User {
 
   private email: string;
   private photo: File;
+  private photoURL: string
 
   constructor(private username,  private password){}
 
@@ -19,6 +20,10 @@ export class User {
 
   getPhoto(){
     return this.photo;
+  }
+
+  getPhotoURL(){
+    return this.photoURL;
   }
 
   setUsername(username: string){
