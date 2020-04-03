@@ -12,4 +12,10 @@ export class SidebarComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  openTab = 1;
+  
+  toggleTabs($tabNumber: number){
+    this.openTab = $tabNumber;
+  }
+
 }
