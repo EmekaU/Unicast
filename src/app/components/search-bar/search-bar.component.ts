@@ -13,7 +13,7 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class SearchBarComponent implements OnInit {
   list:Array<any>
-  prefix = 'data:image/jpg;base64,';
+  prefix = 'data:image/jpg;base64,'; // Dont Need
   subscription: Subscription;
   constructor(
     private searchService: SearchService,

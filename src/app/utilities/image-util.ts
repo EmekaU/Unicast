@@ -11,4 +11,10 @@ export class ImageUtil {
     let stringChar = String.fromCharCode.apply(null, array);
     return btoa(stringChar); // base64 String
   }
+  
 }
+
+
+//TODO change it getUrl
+// prefix + base64string
+
