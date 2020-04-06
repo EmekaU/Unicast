@@ -1,18 +1,45 @@
-<div>
-  <div id="user-profile">
-    <img [src]="user['photo']"/>
-    <div id="user-profile-details">
-      <div id="user-details-wrap">
-        <h1 class="text-5xl">{{ user['username'] }}</h1>
-        <p class="text-lg">Designing the feel of the page, making sure all things look beautiful and nice{{ user['bio'] }}</p>
+<div class="user_profile">
+
+  <!--<div class="back-link"><h6>Back</h6></div>-->
+
+  <section class="profile_card">
+    <div *ngIf="editMode == false; else editView">
+      <div class="img_wrap">
+        <img [src]="user['photo']"/>
       </div>
-      <div id="edit-user-details-btns">
-        <button type="button" [routerLink]="['edit']" *ngIf="isLoggedInUser; else subscribe">Edit Your Profile</button>
-        <ng-template #subscribe>
-            <button type="button" (click)="toggleSubscription()">Subscribe</button>
-        </ng-template>
+
+      <div class="user_details">
+        <div>
+          <h2 class="text-2xl"> {{ user['username'] }}</h2>
+          <p class="text-lg"> Designing the page, hopefully it turns out nice and beautifull {{ user['bio'] }}</p>
+        </div>
+
+        <div class="profile-btns" *ngIf="user != null">
+          <button type="button" *ngIf="isLoggedInUser; else subscribe" (click)="editMode = true">EDIT PROFILE</button>
+          <ng-template #subscribe>
+            <button (click)="toggleSubscription()">SUBSCRIBE</button> <!--Add Pipe to make uppercase-->
+          </ng-template>
+        </div>
       </div>
-      <router-outlet></router-outlet>
     </div>
-  </div>
+    <ng-template #editView>
+      <app-user-details-edit [userData]="user" (userDataChanged)="modifyUser($event)"></app-user-details-edit>
+    </ng-template>
+  </section>
+
+  <section class="user_link_options">
+    <div class="nav">
+      <ul class="sub-list">
+        <li class="list-item" routerLinkActive="active">
+          <a [routerLink]="['podcasts']">MY PODCASTS</a>
+        </li>
+        <li class="list-item" *ngIf="isLoggedInUser" routerLinkActive="active">
+          <a [routerLink]="['subscriptions']" >SUBSCRIPTIONS</a>
+        </li>
+        <li class="list-item"  routerLinkActive="active" *ngIf="isLoggedInUser">
+          <a [routerLink]="['subscribers']" >SUBSCRIBERS</a>
+        </li>
+      </ul>
+    </div>
+  </section>
 </div>

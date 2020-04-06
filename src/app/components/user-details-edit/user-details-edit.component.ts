@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+import { NgForm } from '@angular/forms';
+import { EventEmitter } from 'protractor';
 
 @Component({
   selector: 'app-user-details-edit',
@@ -6,10 +9,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./user-details-edit.component.scss']
 })
 export class UserDetailsEditComponent implements OnInit {
+  @Input() userData: {};
+  @Output() userDataChange = new EventEmitter();
 
-  user = {};
-  isLoggedInUser = true;
-  constructor() { }
+  constructor(private router: Router, private route:ActivatedRoute) { }
 
   ngOnInit(): void {
   }
@@ -28,14 +31,20 @@ export class UserDetailsEditComponent implements OnInit {
     reader.onloadend = function(){
 
       base64String = reader.result;
-      self.user['photo'] = base64String;
+      self.userData['photo'] = base64String;
     };
 
     reader.readAsDataURL(input.files[0]);
 
   }
 
-  logOut(){
-    //TODO: Nullify token, redirect to login page.
+  save(f: NgForm){
+    let userData = {}
+    userData["bio"] = f.value.bio;
+    userData["photo"] = this.userData['photo'];
+    userData["email"] = f.value.email;
+
+    this.userDataChange.emit(JSON.stringify(userData));
   }
+
 }

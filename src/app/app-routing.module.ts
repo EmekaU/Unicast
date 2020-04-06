@@ -19,7 +19,10 @@ const routes: Routes = [
   },
   {path: 'user-profile/:username', component: UserProfileComponent,
      children: [
-       {path: ':edit', component: UserDetailsEditComponent}
+       {path: ':edit', outlet:"edit", component: UserDetailsEditComponent},
+       {path: 'podcasts', component: PodcastContainerComponent},
+       {path: 'subscriptions', component: PodcastContainerComponent},
+       {path: 'subscribers', component: PodcastContainerComponent}
       ]
   },
   {path: '**', redirectTo: ''}
