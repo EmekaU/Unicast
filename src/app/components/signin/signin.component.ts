@@ -31,6 +31,7 @@ export class SigninComponent implements OnInit {
     this.httpUser.signInUser(user).subscribe(
       data => {
         this.auth.saveJWTToLocalStorage(data)
+        console.log(this.auth.getDecodedAccessToken(this.auth.retrieveToken()))
         this.router.navigate([this.returnUrl])
       },
 

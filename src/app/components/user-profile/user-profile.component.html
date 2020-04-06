@@ -1,1 +1,18 @@
-<p>user-profile works!</p>
+<div>
+  <div id="user-profile">
+    <img [src]="user['photo']"/>
+    <div id="user-profile-details">
+      <div id="user-details-wrap">
+        <h1 class="text-5xl">{{ user['username'] }}</h1>
+        <p class="text-lg">Designing the feel of the page, making sure all things look beautiful and nice{{ user['bio'] }}</p>
+      </div>
+      <div id="edit-user-details-btns">
+        <button type="button" [routerLink]="['edit']" *ngIf="isLoggedInUser; else subscribe">Edit Your Profile</button>
+        <ng-template #subscribe>
+            <button type="button" (click)="toggleSubscription()">Subscribe</button>
+        </ng-template>
+      </div>
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

@@ -4,7 +4,7 @@ import { SearchService } from "../../services/unicast-api.service";
 import { Subscription } from 'rxjs';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ImageUtil } from 'src/app/utilities/image-util';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
 @Component({
   selector: 'app-search-bar',
@@ -13,7 +13,6 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class SearchBarComponent implements OnInit {
   list:Array<any>
-  prefix = 'data:image/jpg;base64,'; // Dont Need
   subscription: Subscription;
   constructor(
     private searchService: SearchService,
@@ -22,8 +21,7 @@ export class SearchBarComponent implements OnInit {
     private router: Router,
     private userService: UserService) {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   search(f: NgForm){
     this.subscription = this.searchService.wildSearch(f.value.query).subscribe(
@@ -40,13 +38,13 @@ export class SearchBarComponent implements OnInit {
     return userList.concat(podcastList)
   }
 
-  getImagePath(photo: ArrayBuffer){
-    return this.sanitizer.bypassSecurityTrustResourceUrl(this.prefix + this.imgUtil.getBase64(photo));
+  getImagePath(photoURL: string){
+    return this.sanitizer.bypassSecurityTrustResourceUrl(this.imgUtil.getImgUrl(photoURL));
   }
 
   redirectToUserProfile(userObject: JSON){
     this.userService.forwardUser.next(userObject);
-    this.router.navigate([`user-profile/${userObject["username"]}`] ,)
+    this.router.navigate([`user-profile/${userObject["username"]}`])
   }
 
   ngOnDestroy(){

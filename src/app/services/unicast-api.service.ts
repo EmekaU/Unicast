@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { User } from '../models/user.model';
-import { catchError, map, tap } from 'rxjs/operators';
-import { Observable, of } from 'rxjs';
+import { Observable} from 'rxjs';
 
 const URL = "http://localhost:8080" ;
 
@@ -39,10 +38,13 @@ export class UserAPIService{
   }
 
   getUser(username: string): Observable<JSON>{
-    console.log(username)
     return this.http.get<JSON>(`${URL}/user/get/${username}`, {responseType: 'json'})
   }
 
+  subscribe(subscriber:string, subscribeTo:string){
+    let json = {'subscriberid': subscriber, 'subscribetoid': subscribeTo}
+    return this.http.post<any>(`${URL}/user/subscribe`, JSON.stringify(json))
+  }
 }
 
 @Injectable({

@@ -1,0 +1,58 @@
+<div>
+  <div class="sidebar" *ngIf="isLoggedInUser">
+  <h2>User Profile<h2>
+
+  <div class="user-profile-item" routerLink>
+      <div class="icon">
+      <div>
+      <div class="sidebar-text">User Info<div>
+  <div>
+
+  <div class="user-profile-item" routerLink>
+      <div class="icon">
+      <div>
+      <div class="sidebar-text">My Podcasts<div>
+      <div>
+  </div>
+
+  <div class="user-profile-item" routerLink>
+      <div class="icon">
+      <div>
+      <div class="sidebar-text">Subscriptions<div>
+  <div>
+
+  <div class="user-profile-item" routerLink>
+      <div class="icon">
+      <div>
+      <div class="sidebar-text">Subscribers<div>
+  <div>
+
+  <div class="log-out" (click)="logOut()">
+      <div class="icon">
+      <div>
+      <div class="sidebar-text">Log Out<div>
+      <div>
+  </div>
+
+  <div class="user-profile-view">
+
+    <div>
+      <div style="height: 100px">
+        <img [src]="user['photo']" (click)="openDialog()" style="cursor: pointer"/>
+      <div>
+
+      <form #f="ngForm">
+        <input type="file" class="hide" [(ngModel)]="user['photo']" name="image" id="file-upload" (change)="setImageURL($event)" >
+
+        <input type="text" name="bio" maxlength="250"/>
+
+        <input type="email" name="email" />
+
+        <button type="button" [attr.disabled]="f.pristine"> Save Changes</button>
+      </form>
+
+    </div>
+
+  </div>
+</div>
+

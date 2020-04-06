@@ -5,7 +5,8 @@ import { AuthGuard } from './auth/auth.guard';
 import { SignupComponent } from './components/signup/signup.component';
 import { SigninComponent } from './components/signin/signin.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
-import { PodcastContainerComponent } from './podcast-container/podcast-container.component';
+import { PodcastContainerComponent } from './components/podcast-container/podcast-container.component';
+import { UserDetailsEditComponent } from './components/user-details-edit/user-details-edit.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'signup', pathMatch: 'full' },
@@ -16,7 +17,11 @@ const routes: Routes = [
       {path: 'podcasts/:type', component:PodcastContainerComponent}
     ]
   },
-  {path: 'user-profile/:username', component: UserProfileComponent},
+  {path: 'user-profile/:username', component: UserProfileComponent,
+     children: [
+       {path: ':edit', component: UserDetailsEditComponent}
+      ]
+  },
   {path: '**', redirectTo: ''}
 ];
 @NgModule({
