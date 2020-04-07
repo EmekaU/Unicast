@@ -29,7 +29,7 @@ export class UserAPIService{
 
   updateUser(user): Observable<string>{
 
-    return this.http.post<string>(`${URL}/user/update`, user)
+    return this.http.post<string>(`${URL}/user/update`, JSON.stringify(user), {responseType: 'text' as 'json'})
   }
 
   deleteUser(user: User): Observable<string>{

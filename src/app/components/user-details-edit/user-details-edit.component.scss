@@ -27,6 +27,16 @@ input{
   margin: 10px 0px;
 }
 
-button{
+button.save{
   background-color: #5cdb95;
 }
+
+button.cancel{
+  background-color: #ccce;
+}
+
+.btns button{
+  width: 40%;
+  margin: 10px;
+}
+

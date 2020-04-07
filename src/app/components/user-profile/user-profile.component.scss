@@ -48,11 +48,16 @@
 }
 .nav{
   margin: 0 auto;
-  width: 50%;
   margin-top: 20px;
+  position: relative;
+}
+.nav ul{
+  width: 50%;
+  margin: 0 auto;
+  text-align: center;
 }
 .list-item{
-  display: table-cell;
+  display: inline-block;
   padding: 10px;
   text-align: center;
   letter-spacing: 1px;

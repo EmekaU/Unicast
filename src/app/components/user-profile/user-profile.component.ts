@@ -57,13 +57,12 @@ export class UserProfileComponent implements OnInit {
   }
 
   modifyUser(data){
+    this.editMode = false;
     if(data != null){
       this.user['photo'] = data['photo'];
       this.user['bio'] = data['bio'];
       this.user['email'] = data['email'];
-      console.log(data)
     }
-    this.editMode = false;
   }
 
   ngOnDestroy(): void{

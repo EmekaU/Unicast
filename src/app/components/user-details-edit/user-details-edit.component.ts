@@ -4,13 +4,12 @@ import { NgForm } from '@angular/forms';
 import { UserAPIService } from 'src/app/services/unicast-api.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { Subscription } from 'rxjs';
-
 @Component({
   selector: 'app-user-details-edit',
   templateUrl: './user-details-edit.component.html',
   styleUrls: ['./user-details-edit.component.scss']
 })
-export class UserDetailsEditComponent implements OnInit, OnDestroy {
+export class UserDetailsEditComponent implements OnInit {
   @Input() userData: {};
   @Output() userDataChange = new EventEmitter<Object>();
 
@@ -51,23 +50,20 @@ export class UserDetailsEditComponent implements OnInit, OnDestroy {
       'email': this.userData['email'],
       'photo': this.userData['photo']
     }
-    this.subscription = this.apiUser.updateUser(userData).subscribe(
+    this.apiUser.updateUser(userData).subscribe(
       token => {
+        console.log(token)
         this.auth.saveJWTToLocalStorage(token);
         this.userDataChange.emit(userData);
       },
       error => {
         // Let user know that data wasn't updated.
       }
-    )
+    ).unsubscribe()
   }
 
   cancel(){
     this.userDataChange.emit(null);
-  }
-
-  ngOnDestroy(){
-    this.subscription.unsubscribe();
   }
 
 }
