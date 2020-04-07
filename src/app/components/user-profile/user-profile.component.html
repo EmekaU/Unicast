@@ -10,8 +10,8 @@
 
       <div class="user_details">
         <div>
-          <h2 class="text-2xl"> {{ user['username'] }}</h2>
-          <p class="text-lg"> Designing the page, hopefully it turns out nice and beautifull {{ user['bio'] }}</p>
+          <h2 class="text-2xl">{{ user['username'] }}</h2>
+          <p class="text-lg">{{ user['bio'] }}</p>
         </div>
 
         <div class="profile-btns" *ngIf="user != null">
@@ -23,7 +23,7 @@
       </div>
     </div>
     <ng-template #editView>
-      <app-user-details-edit [userData]="user" (userDataChanged)="modifyUser($event)"></app-user-details-edit>
+      <app-user-details-edit [userData]="user" (userDataChange)="modifyUser($event)"></app-user-details-edit>
     </ng-template>
   </section>
 

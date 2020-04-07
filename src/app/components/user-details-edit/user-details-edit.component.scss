@@ -7,11 +7,26 @@
   border: 2px #eef solid;
 }
 .img_wrap img{
-  max-width: 128px;
+  width: 128px;
 }
 
 .img_wrap, .user_details{
   vertical-align: middle;
   display: inline-block;
   margin-right: 30px;
+}
+
+.user-edit-view{
+  text-align: center;
+  width: 50%;
+  margin: 0 auto;
+  padding: 10px 0px;
+}
+
+input{
+  margin: 10px 0px;
+}
+
+button{
+  background-color: #5cdb95;
 }

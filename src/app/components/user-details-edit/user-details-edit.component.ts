@@ -1,21 +1,27 @@
-import { Component, OnInit, Input, Output } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NgForm } from '@angular/forms';
-import { EventEmitter } from 'protractor';
+import { UserAPIService } from 'src/app/services/unicast-api.service';
+import { AuthService } from 'src/app/services/auth.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-user-details-edit',
   templateUrl: './user-details-edit.component.html',
   styleUrls: ['./user-details-edit.component.scss']
 })
-export class UserDetailsEditComponent implements OnInit {
+export class UserDetailsEditComponent implements OnInit, OnDestroy {
   @Input() userData: {};
-  @Output() userDataChange = new EventEmitter();
+  @Output() userDataChange = new EventEmitter<Object>();
 
-  constructor(private router: Router, private route:ActivatedRoute) { }
+  subscription: Subscription;
 
-  ngOnInit(): void {
-  }
+  constructor(
+    private apiUser: UserAPIService,
+    private auth: AuthService
+    ) { }
+
+  ngOnInit(): void {}
 
   openDialog(){
     document.getElementById('file-upload').click();
@@ -39,12 +45,29 @@ export class UserDetailsEditComponent implements OnInit {
   }
 
   save(f: NgForm){
-    let userData = {}
-    userData["bio"] = f.value.bio;
-    userData["photo"] = this.userData['photo'];
-    userData["email"] = f.value.email;
+    let userData = {
+      'username': this.userData['username'],
+      'bio': this.userData['bio'],
+      'email': this.userData['email'],
+      'photo': this.userData['photo']
+    }
+    this.subscription = this.apiUser.updateUser(userData).subscribe(
+      token => {
+        this.auth.saveJWTToLocalStorage(token);
+        this.userDataChange.emit(userData);
+      },
+      error => {
+        // Let user know that data wasn't updated.
+      }
+    )
+  }
 
-    this.userDataChange.emit(JSON.stringify(userData));
+  cancel(){
+    this.userDataChange.emit(null);
+  }
+
+  ngOnDestroy(){
+    this.subscription.unsubscribe();
   }
 
 }
