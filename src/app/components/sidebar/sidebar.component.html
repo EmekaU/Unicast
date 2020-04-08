@@ -7,17 +7,17 @@
           </a>
           <ul class="flex mb-0 list-none flex-wrap pt-3 pb-4 flex-col mr-3 ml-3"
           >
-            <li *ngFor="let pod of podcasts"><a class="sidebar_a" 
-              (click)="showPodcast()">{{pod}}</a></li>
+            <li *ngFor="let pod of podcasts"><a routerLinkActive="active" class="sidebar_a"
+              (click)="showPodcast(pod)">{{pod}}</a></li>
           </ul>
         </li>
         <li class="-mb-px mr-2 last:mr-0 flex-auto text-center">
-          <a class="text-sm fas font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal" 
+          <a class="text-sm fas font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal"
           > Categories
           </a>
           <ul class="flex mb-0 list-none flex-wrap pt-3 pb-4 flex-col mr-3 ml-3">
-            <li *ngFor="let cat of categories"><a class="sidebar_a" 
-              (click)="showPodcast()">{{cat}}</a></li>
+            <li *ngFor="let cat of categories"><a class="sidebar_a"
+              (click)="showPodcast(cat)" routerLinkActive="active">{{cat}}</a></li>
           </ul>
         </li>
       </ul>
