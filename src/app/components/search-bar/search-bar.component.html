@@ -1,4 +1,4 @@
-<div>
+<div >
     <form (ngSubmit)="search(f)" #f="ngForm" class="search-box">
         <span class="search-icon">
         <button>
@@ -10,8 +10,8 @@
                 </svg>
             </i>
         </button>
-        </span>
-        <input type="text" aria-label="Search" class="search form-control" autocomplete="on" id="search-input" name="query" placeholder="Search" speech ngModel />
+        </span >
+        <input type="text" aria-label="Search" class="search form-control" autocomplete="on" id="search-input" name="query" placeholder="Search"  speech ngModel />
     </form>
 
     <div class="dropdown-menu"  *ngIf="list != null">
