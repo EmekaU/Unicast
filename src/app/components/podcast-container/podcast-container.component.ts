@@ -7,11 +7,15 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./podcast-container.component.scss']
 })
 export class PodcastContainerComponent implements OnInit {
+  type: String
 
-  constructor(private route: ActivatedRoute, private router: Router) { }
+  constructor(private route: ActivatedRoute, private router: Router) {
+    
+   }
 
   ngOnInit(): void {
-
+    this.type = this.route.snapshot['type']
+    
   }
 
 }

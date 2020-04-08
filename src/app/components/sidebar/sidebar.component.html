@@ -1,4 +1,4 @@
-<div class="flex flex-wrap mt-5">
+<div class="flex-1 flex-wrap mt-5">
     <div class="w-1/5">
       <ul class="flex mb-0 list-none flex-wrap pt-3 pb-4 flex-col">
         <li class="-mb-px mr-2 last:mr-0 flex-auto text-center">
@@ -8,7 +8,7 @@
           <ul class="flex mb-0 list-none flex-wrap pt-3 pb-4 flex-col mr-3 ml-3"
           >
             <li *ngFor="let pod of podcasts"><a class="sidebar_a" 
-              (click)="showPopular">{{pod}}</a></li>
+              (click)="showPodcast()">{{pod}}</a></li>
           </ul>
         </li>
         <li class="-mb-px mr-2 last:mr-0 flex-auto text-center">
@@ -17,7 +17,7 @@
           </a>
           <ul class="flex mb-0 list-none flex-wrap pt-3 pb-4 flex-col mr-3 ml-3">
             <li *ngFor="let cat of categories"><a class="sidebar_a" 
-              (click)="showPopular">{{cat}}</a></li>
+              (click)="showPodcast()">{{cat}}</a></li>
           </ul>
         </li>
       </ul>
