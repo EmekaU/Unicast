@@ -5,21 +5,19 @@
           <a class="text-sm font-bold fas uppercase px-5 py-3 shadow-lg rounded block leading-normal">
              Podcasts
           </a>
-          <ul class="flex mb-0 list-none flex-wrap pt-3 pb-4 flex-col mr-3 ml-3">
-            <li><a class="sidebar_a">Popular</a></li>
-            <li><a class="sidebar_a">Recommended</a></li>
-            <li><a class="sidebar_a">Recent</a></li>
+          <ul class="flex mb-0 list-none flex-wrap pt-3 pb-4 flex-col mr-3 ml-3"
+          >
+            <li *ngFor="let pod of podcasts"><a class="sidebar_a" 
+              (click)="showPopular">{{pod}}</a></li>
           </ul>
         </li>
         <li class="-mb-px mr-2 last:mr-0 flex-auto text-center">
-          <a class="text-xs fas font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal" 
+          <a class="text-sm fas font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal" 
           > Categories
           </a>
           <ul class="flex mb-0 list-none flex-wrap pt-3 pb-4 flex-col mr-3 ml-3">
-            <li><a class="sidebar_a">Comedy</a></li>
-            <li><a class="sidebar_a">Educaional</a></li>
-            <li><a class="sidebar_a">Lifestyle</a></li>
-            <li><a class="sidebar_a">Misc</a></li>
+            <li *ngFor="let cat of categories"><a class="sidebar_a" 
+              (click)="showPopular">{{cat}}</a></li>
           </ul>
         </li>
       </ul>

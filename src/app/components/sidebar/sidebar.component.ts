@@ -8,10 +8,21 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class SidebarComponent implements OnInit {
 
-  constructor(private router: Router, private route: ActivatedRoute) { }
+   categories = ['Comedy', 'Educational', 'Lifestyle', 'Misc']
+   podcasts = ['Popular', 'Recommended', 'Recent']
+
+  constructor(private router: Router, private route: ActivatedRoute) { 
+
+
+  }
 
   ngOnInit(): void {
+    // TODO: Might need to reload a pre-set category from here
     
+  }
+
+  showPopular(){
+    this.router.navigate['popular']
   }
 
 }
