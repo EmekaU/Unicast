@@ -1,49 +1,31 @@
-<div class="flex flex-wrap">
-    <div class="w-1/3">
+<div class="flex flex-wrap mt-5">
+    <div class="w-1/5">
       <ul class="flex mb-0 list-none flex-wrap pt-3 pb-4 flex-col">
         <li class="-mb-px mr-2 last:mr-0 flex-auto text-center">
-          <a class="text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal" 
-          (click)="toggleTabs(1)" 
-          [ngClass]="{'text-pink-600 bg-white': openTab !== 1, 'text-white bg-pink-600': openTab === 1}">
-  <i class="fas fa-space-shuttle text-base mr-1"></i> Podcasts
+          <a class="text-sm font-bold fas uppercase px-5 py-3 shadow-lg rounded block leading-normal">
+             Podcasts
           </a>
+          <ul class="flex mb-0 list-none flex-wrap pt-3 pb-4 flex-col mr-3 ml-3">
+            <li class="sidebar_li"
+            >Popular</li>
+            <li class="sidebar_li"
+            >Recommended</li>
+            <li class="sidebar_li">Recents</li>
+          </ul>
         </li>
         <li class="-mb-px mr-2 last:mr-0 flex-auto text-center">
-          <a class="text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal" 
-          (click)="toggleTabs(2)" 
-          [ngClass]="{'text-pink-600 bg-white': openTab !== 2, 'text-white bg-pink-600': openTab === 2}">
-  <i class="fas fa-cog text-base mr-1"></i> Categories
+          <a class="text-xs fas font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal" 
+          > Categories
           </a>
-        </li>
-        <li class="-mb-px mr-2 last:mr-0 flex-auto text-center">
-          <a class="text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal" 
-          (click)="toggleTabs(3)" 
-          [ngClass]="{'text-pink-600 bg-white': openTab !== 3, 'text-white bg-pink-600': openTab === 3}">
-      <i class="fas fa-briefcase text-base mr-1"></i> Recommended
-          </a>
+          <ul class="flex mb-0 list-none flex-wrap pt-3 pb-4 flex-col mr-3 ml-3">
+            <li class="sidebar_li">Comedy</li>
+            <li class="sidebar_li">Education</li>
+            <li class="sidebar_li">Lifestyle</li>
+            <li class="sidebar_li">Misc</li>
+          </ul>
         </li>
       </ul>
     </div>
   </div>
 
-  <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded">
-    <div class="px-4 py-5 flex-auto">
-      <div class="tab-content tab-space">
-        <div [ngClass]="{'hidden': openTab !== 1, 'block': openTab === 1}">
-          <div class="bg-gray-200">
-            Collaboratively administrate empowered markets
-        </div>
-        </div>
-        <div [ngClass]="{'hidden': openTab !== 2, 'block': openTab === 2}">
-          <p>
-            Completely synergize resource taxing relationships via
-          </p>
-        </div>
-        <div [ngClass]="{'hidden': openTab !== 3, 'block': openTab === 3}">
-          <p>
-            Efficiently unleash cross-media information without
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
+
