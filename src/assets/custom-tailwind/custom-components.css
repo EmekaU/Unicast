@@ -12,7 +12,7 @@
   }
 
 
-  .sidebar_li{
+  .sidebar_a{
     @apply px-5;
     @apply py-3; 
     @apply shadow-md;
@@ -23,7 +23,7 @@
     @apply font-semibold;
   }
 
-  .sidebar_li:hover{
+  .sidebar_a:hover{
     @apply -translate-y-1;
     @apply border-2;
     @apply duration-500;
