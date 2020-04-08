@@ -6,8 +6,11 @@
 }
 
 .header{
-  height: 80px;
+  height: 60px;
   position: relative;
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem
+
 }
 
 .inner_header{

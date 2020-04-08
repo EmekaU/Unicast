@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+
 
 @Component({
   selector: 'app-sidebar',
@@ -7,15 +9,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SidebarComponent implements OnInit {
 
-  constructor() { }
+   categories = ['Comedy', 'Educational', 'Lifestyle', 'Misc']
+   podcasts = ['Popular', 'Recommended', 'Recent']
+
+
+  constructor(private router: Router, private route: ActivatedRoute) {
+
+  }
 
   ngOnInit(): void {
   }
 
-  openTab = 1;
-  
-  toggleTabs($tabNumber: number){
-    this.openTab = $tabNumber;
+  showPodcast(value){
+    this.router.navigate(['podcasts', value], {relativeTo: this.route})
+    // struggled with this for so long. wow
+
   }
 
 }
