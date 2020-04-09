@@ -76,6 +76,10 @@ export class PodcastService{
     return this.http.get<JSON>(`${URL}/podcast${type}${category}`, {responseType: 'json'})
   }
 
+  createPodcast(data){
+
+    return this.http.get<JSON>(`${URL}/podcast/create`, data)
+  }
 }
 
 

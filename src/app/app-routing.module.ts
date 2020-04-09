@@ -6,6 +6,7 @@ import { SignupComponent } from './components/signup/signup.component';
 import { SigninComponent } from './components/signin/signin.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { PodcastContainerComponent } from './components/podcast-container/podcast-container.component';
+import { PodcastCreationComponent } from './components/podcast-creation/podcast-creation.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'signup', pathMatch: 'full' },
@@ -19,6 +20,7 @@ const routes: Routes = [
   },
   {path: 'user-profile/:username', component: UserProfileComponent,
      children: [
+      {path: 'create', component: PodcastCreationComponent},
        {path: 'podcasts', component: PodcastContainerComponent},
        {path: 'subscriptions', component: PodcastContainerComponent},
        {path: 'subscribers', component: PodcastContainerComponent}

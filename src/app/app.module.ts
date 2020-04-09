@@ -23,6 +23,7 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
 import { PodcastContainerComponent } from './components/podcast-container/podcast-container.component';
 import { UserDetailsEditComponent } from './components/user-details-edit/user-details-edit.component';
 import { PodcastCardComponent } from './components/podcast-card/podcast-card.component';
+import { PodcastCreationComponent } from './components/podcast-creation/podcast-creation.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,6 +38,7 @@ import { PodcastCardComponent } from './components/podcast-card/podcast-card.com
     PodcastContainerComponent,
     UserDetailsEditComponent,
     PodcastCardComponent,
+    PodcastCreationComponent,
   ],
   imports: [
     CommonModule,

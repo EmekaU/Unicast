@@ -27,17 +27,17 @@
     </ng-template>
   </section>
 
-  <section class="user_link_options">
+  <section class="user_link_options" *ngIf="editMode == false">
     <div class="nav">
       <ul class="sub-list">
         <li class="list-item" routerLinkActive="active">
           <a [routerLink]="['podcasts']">MY PODCASTS</a>
         </li>
         <li class="list-item" *ngIf="isLoggedInUser" routerLinkActive="active">
-          <a [routerLink]="['subscriptions']" >SUBSCRIPTIONS</a>
+          <a [routerLink]="['create']" >create podcast</a>
         </li>
-        <li class="list-item"  routerLinkActive="active" *ngIf="isLoggedInUser">
-          <a [routerLink]="['subscribers']" >SUBSCRIBERS</a>
+        <li class="list-item" *ngIf="isLoggedInUser" routerLinkActive="active">
+          <a [routerLink]="['subscriptions']" >SUBSCRIPTIONS</a>
         </li>
       </ul>
     </div>
