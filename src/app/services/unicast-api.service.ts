@@ -71,8 +71,9 @@ export class PodcastService{
   constructor(private http: HttpClient){}
 
   getPodcasts(type: string, category: string){
-    type = `\\${type}`
-    return this.http.get<JSON>(`${URL}/podcast${type}?${category}`, {responseType: 'json'})
+    type = type == undefined? "": `/${type}`;;
+    category = category == undefined? "": `?category=${category}`;
+    return this.http.get<JSON>(`${URL}/podcast${type}${category}`, {responseType: 'json'})
   }
 
 }

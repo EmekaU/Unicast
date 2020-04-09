@@ -5,10 +5,10 @@
 .search-box{
   display: table;
   padding: 10px 10px;
-  width: 100%;
-  border: 2px #eef solid;
-  background-color: #fff;
+  background-color: transparent;
   height: 10px;
+  border: 2px #eef solid;
+  margin: 0 auto;
 }
 .search-icon{
   vertical-align: middle;
@@ -26,7 +26,20 @@ input.search{
   vertical-align: middle;
   margin-left: 15px;
   height: 30px;
-  color: #000;
+  padding: 5px;
+  background-color: transparent;
+}
+::placeholder{
+  color: #ccc;
+}
+:-moz-placeholder{
+  color: #ccc;
+}
+:-ms-input-placeholder{
+  color: #cccccc;
+}
+::-webkit-input-placeholder{
+  color: #cccccc;
 }
 
 .dropdown-menu{
@@ -56,3 +69,4 @@ input.search{
 
   display: none;
 }
+

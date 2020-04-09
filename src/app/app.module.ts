@@ -22,6 +22,7 @@ import { ImageUtil } from './utilities/image-util';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { PodcastContainerComponent } from './components/podcast-container/podcast-container.component';
 import { UserDetailsEditComponent } from './components/user-details-edit/user-details-edit.component';
+import { PodcastCardComponent } from './components/podcast-card/podcast-card.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,7 +35,8 @@ import { UserDetailsEditComponent } from './components/user-details-edit/user-de
     SearchBarComponent,
     UserProfileComponent,
     PodcastContainerComponent,
-    UserDetailsEditComponent
+    UserDetailsEditComponent,
+    PodcastCardComponent,
   ],
   imports: [
     CommonModule,

@@ -25,7 +25,8 @@ export class PodcastContainerComponent implements OnInit {
     this.route.paramMap.subscribe(
       ParamData => {
         // Get Param
-        this.type = ParamData['params']["type"];
+        console.log(ParamData)
+        this.type = ParamData['params']["type"] || "" ;
 
         // Get QueryParam
         this.route.queryParamMap.subscribe(
@@ -33,7 +34,6 @@ export class PodcastContainerComponent implements OnInit {
             this.category = queryData['params']["category"];
 
             // Get Podcasts
-            this.type = this.type == undefined? "": this.type;
             this.podcastAPI.getPodcasts(this.type, this.category).subscribe(
               podcasts => {
                 this.podcasts = podcasts;
