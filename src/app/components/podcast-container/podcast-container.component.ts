@@ -10,12 +10,15 @@ export class PodcastContainerComponent implements OnInit {
   type: String
 
   constructor(private route: ActivatedRoute, private router: Router) {
-    
+
    }
 
   ngOnInit(): void {
-    this.type = this.route.snapshot['type']
-    
+
+    this.route.paramMap.subscribe(
+      data => {
+        this.type = data['params']["type"];
+    });
   }
 
 }
