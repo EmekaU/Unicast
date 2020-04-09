@@ -5,10 +5,10 @@
           <a class="text-sm font-bold fas uppercase px-5 py-3 shadow-lg rounded block leading-normal">
              Podcasts
           </a>
-          <ul class="flex mb-0 list-none flex-wrap pt-3 pb-4 flex-col mr-3 ml-3"
-          >
-            <li *ngFor="let pod of podcasts"><a routerLinkActive="active" class="sidebar_a"
-              (click)="showPodcast(pod)">{{pod}}</a></li>
+          <ul class="flex mb-0 list-none flex-wrap pt-3 pb-4 flex-col mr-3 ml-3">
+            <li><a [routerLink]="['podcasts/popular']"  routerLinkActive="active" class="sidebar_a">Popular</a></li>
+            <li><a [routerLink]="['podcasts/recommended']" routerLinkActive="active" class="sidebar_a">Recommended</a></li>
+            <li><a [routerLink]="['podcasts/recent']" routerLinkActive="active" class="sidebar_a">Recent</a></li>
           </ul>
         </li>
         <li class="-mb-px mr-2 last:mr-0 flex-auto text-center">
@@ -16,8 +16,18 @@
           > Categories
           </a>
           <ul class="flex mb-0 list-none flex-wrap pt-3 pb-4 flex-col mr-3 ml-3">
-            <li *ngFor="let cat of categories"><a class="sidebar_a"
-              (click)="showPodcast(cat)" routerLinkActive="active">{{cat}}</a></li>
+            <li>
+              <a [routerLink]="['podcasts']" [queryParams]="{category:'comedy'}" class="sidebar_a" routerLinkActive="active">Comedy</a>
+            </li>
+            <li>
+              <a [routerLink]="['podcasts']" [queryParams]="{category:'educational'}" class="sidebar_a" routerLinkActive="active">Educational</a>
+            </li>
+            <li>
+              <a [routerLink]="['podcasts']" [queryParams]="{category:'lifestyle'}" class="sidebar_a" routerLinkActive="active">LifeStyle</a>
+            </li>
+            <li>
+              <a [routerLink]="['podcasts']" [queryParams]="{category:'misc'}" class="sidebar_a" routerLinkActive="active">Misc</a>
+            </li>
           </ul>
         </li>
       </ul>

@@ -9,21 +9,10 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class SidebarComponent implements OnInit {
 
-   categories = ['Comedy', 'Educational', 'Lifestyle', 'Misc']
-   podcasts = ['Popular', 'Recommended', 'Recent']
 
-
-  constructor(private router: Router, private route: ActivatedRoute) {
-
-  }
+  constructor() {}
 
   ngOnInit(): void {
-  }
-
-  showPodcast(value){
-    this.router.navigate(['podcasts', value], {relativeTo: this.route})
-    // struggled with this for so long. wow
-
   }
 
 }

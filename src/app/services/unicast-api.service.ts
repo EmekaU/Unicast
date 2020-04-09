@@ -62,3 +62,19 @@ export class SearchService{
 }
 
 
+@Injectable({
+  providedIn: 'root'
+})
+
+export class PodcastService{
+
+  constructor(private http: HttpClient){}
+
+  getPodcasts(type: string, category: string){
+    type = `\\${type}`
+    return this.http.get<JSON>(`${URL}/podcast${type}?${category}`, {responseType: 'json'})
+  }
+
+}
+
+

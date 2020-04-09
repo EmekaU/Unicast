@@ -13,6 +13,7 @@ const routes: Routes = [
   {path: 'signin', component: SigninComponent},
   {path: 'hub', component: HubComponent, canActivate: [AuthGuard],
     children: [
+      {path: 'podcasts', component:PodcastContainerComponent},
       {path: 'podcasts/:type', component:PodcastContainerComponent}
     ]
   },

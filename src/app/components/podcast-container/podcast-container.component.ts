@@ -1,5 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Query, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { PodcastService } from 'src/app/services/unicast-api.service';
+import { Subscription } from 'rxjs';
+
+//
+// THIS COMPONENT IS USED IN THE HUB AND USER PROFILE
+//
 
 @Component({
   selector: 'app-podcast-container',
@@ -7,18 +13,39 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./podcast-container.component.scss']
 })
 export class PodcastContainerComponent implements OnInit {
-  type: String
+  type: string;
+  category: string;
+  podcasts = {};
 
-  constructor(private route: ActivatedRoute, private router: Router) {
-
-   }
+  constructor(private route: ActivatedRoute, private router: Router, private podcastAPI: PodcastService) {}
 
   ngOnInit(): void {
 
+
+    //First get the type, then query. Use both values to retrieve podcasts.
     this.route.paramMap.subscribe(
-      data => {
-        this.type = data['params']["type"];
+      ParamData => {
+        // Get Param
+        this.type = ParamData['params']["type"];
+
+        // Get QueryParam
+        this.route.queryParamMap.subscribe(
+          queryData => {
+            this.category = queryData['params']["category"];
+
+            // Get Podcasts
+            this.podcastAPI.getPodcasts(this.type, this.category).subscribe(
+              podcasts => {
+                this.podcasts = podcasts;
+              },
+
+              error => {
+                //this.router.navigate(['../'], {relativeTo: this.route})
+                //OR
+                //Something that makes netter sense
+                // Remember this component is used in the Hub and User Profile
+            });
+        });
     });
   }
-
 }
