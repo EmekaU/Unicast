@@ -39,7 +39,7 @@ export class InterceptorService implements HttpInterceptor {
         if (error.status === 401) {
           alert('Access Denied'); // TODO: Maybe have a modal here
 
-          this.router.navigate(['']); //TODO: or perhaps 404?
+          this.router.navigate(['/signin']); //TODO: or perhaps 404?
           return throwError(error);
         }
         // If it is not an authentication error, just throw it
