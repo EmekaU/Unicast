@@ -1,5 +1,4 @@
 import { Component, OnInit, Input, Output, EventEmitter, OnDestroy } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { UserAPIService } from 'src/app/services/unicast-api.service';
 import { AuthService } from 'src/app/services/auth.service';

@@ -1,7 +1,6 @@
-import { Component, OnInit, Query, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PodcastService } from 'src/app/services/unicast-api.service';
-import { Subscription } from 'rxjs';
 
 //
 // THIS COMPONENT IS USED IN THE HUB AND USER PROFILE
@@ -34,15 +33,16 @@ export class PodcastContainerComponent implements OnInit {
             this.category = queryData['params']["category"];
 
             // Get Podcasts
+            this.type = this.type == undefined? "": this.type;
             this.podcastAPI.getPodcasts(this.type, this.category).subscribe(
               podcasts => {
                 this.podcasts = podcasts;
               },
 
-              error => {
+              error => { // TODO:
                 //this.router.navigate(['../'], {relativeTo: this.route})
                 //OR
-                //Something that makes netter sense
+                //Something that makes more sense
                 // Remember this component is used in the Hub and User Profile
             });
         });
