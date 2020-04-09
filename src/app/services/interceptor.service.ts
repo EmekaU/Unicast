@@ -17,20 +17,27 @@ export class InterceptorService implements HttpInterceptor {
 
     const token = this.auth.retrieveToken();
 
-    const httpOptions = {
-      headers: new HttpHeaders({ 'Content-Type': 'application/json'})
-    };
+    let httpOptions = {}
 
     if(token != null){
-      request.headers.append('token', token)
+      httpOptions = {
+        headers: new HttpHeaders({ 'Content-Type': 'application/json', 'token': token})
+      }
+    }
+    else{
+      httpOptions = {
+        headers: new HttpHeaders({ 'Content-Type': 'application/json'})
+      }
     }
 
     request = request.clone(httpOptions)
 
+    console.log(request)
+
     return next.handle(request).pipe(
       catchError(error => {
         if (error.status === 401) {
-          alert('Access Denied'); // Maybe have a modal here
+          alert('Access Denied'); // TODO: Maybe have a modal here
 
           this.router.navigate(['']); //TODO: or perhaps 404?
           return throwError(error);

@@ -1,7 +1,7 @@
 export class User {
 
   private email: string;
-  private photo: File;
+  private photo: string;
 
   constructor(private username,  private password){}
 
@@ -33,8 +33,28 @@ export class User {
     this.email = email;
   }
 
-  setPhoto(photo: File){
+  setPhoto(photo: string){
     this.photo = photo;
   }
+
+}
+
+export class loggedInUser{
+
+  constructor(
+    private id: number,
+    private username: string,
+    private bio: string,
+    private photo: string,
+    private email: string,
+    private podcasts: [],
+    private subscribers: [],
+    private subscriptions: []
+
+    ){}
+
+    load(source){
+      Object.assign(this, source)
+    }
 
 }

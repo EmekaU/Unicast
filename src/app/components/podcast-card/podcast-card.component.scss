@@ -1,0 +1,42 @@
+.podcast-card{
+  background-color: #1a1a1a;
+  padding: 20px;
+  text-align: left;
+  width: 300px;
+  color: #eef;
+  border-radius: 0.8rem;
+  border: 2px solid #eef;
+  box-shadow: 0px 0px 5px 5px grey;
+  outline: none;
+}
+.podcast-title{
+  font-size: 16px;
+  text-transform: uppercase;
+}
+.podcast-creator{
+  font-size: 12px;
+}
+.podcast-description{
+  font-size: 12px;
+  margin: 2px;
+}
+hr{
+  margin: 5px 0px;
+}
+button{
+  text-align: center;
+  background-color: #000000;
+  border-radius: 0.5rem;
+  color: #eef;
+  border: 2px #eef solid;
+  padding: 0.2rem 0.7rem;
+  width: 50%;
+  margin: 0 auto;
+  outline: none;
+}
+.podcast-btn{
+  text-align: center;
+}
+.podcast-info{
+  margin-bottom: 20px;
+}

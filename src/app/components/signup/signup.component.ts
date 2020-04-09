@@ -15,13 +15,14 @@ export class SignupComponent implements OnInit {
   constructor(private httpUser: UserAPIService , private auth: AuthService, private router: Router) { }
 
   ngOnInit(): void {
+    this.auth.deleteJWTFromLocalStorage();
   }
 
   onSignUp(form: NgForm){
     let user = new User(form.value.username, form.value.password)
     user.setEmail(form.value.email)
 
-    this.httpUser.signInUser(user).subscribe( data => {
+    this.httpUser.signUpUser(user).subscribe( data => {
       this.auth.saveJWTToLocalStorage(data)
       this.auth.printToken()
       this.router.navigate(["hub"])

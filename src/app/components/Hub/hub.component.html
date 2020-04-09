@@ -1,9 +1,15 @@
 <div>
-    <div class="hub-header">
-        <app-search-bar></app-search-bar>
-    </div>
-    <app-sidebar></app-sidebar>
-    <!--<div class="hub-view">
+  <div style="text-align: center">
+    <app-search-bar></app-search-bar>
+  </div>
+  <div class='rounded-lg w-full px-5 py-5'>
+    <div class="flex flex-row">
+      <div>
+        <app-sidebar></app-sidebar>
+      </div>
+      <div class='flex-1'>
         <router-outlet></router-outlet>
-    </div>-->
-</div>
+      </div>
+    </div>
+  </div>
+<div>
