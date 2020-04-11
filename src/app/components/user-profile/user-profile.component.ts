@@ -65,6 +65,11 @@ export class UserProfileComponent implements OnInit {
     }
   }
 
+  navigate(destination){
+    console.log(destination)
+    this.router.navigate([`/user-profile/${this.myUsername}/${destination}`]);
+    this.userService.forwardSubscription.next(this.user[destination]);
+  }
   ngOnDestroy(): void{
     this.subscription.unsubscribe();
   }

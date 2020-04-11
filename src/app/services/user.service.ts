@@ -7,6 +7,7 @@ import { Subject, BehaviorSubject } from 'rxjs';
 export class UserService {
 
   forwardUser = new BehaviorSubject(JSON);
+  forwardSubscription = new BehaviorSubject([]);
   // Behaviour subject holds onto the lat value that was sent, and emits it after a component subscribes to it.
   // A subject doesn't hold onto a value.
   constructor() { }

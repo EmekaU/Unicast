@@ -37,7 +37,7 @@
           <a [routerLink]="['create']" >create podcast</a>
         </li>
         <li class="list-item" *ngIf="isLoggedInUser" routerLinkActive="active">
-          <a [routerLink]="['subscriptions']" >SUBSCRIPTIONS</a>
+          <a (click)="navigate('subscriptions')" >SUBSCRIPTIONS</a>
         </li>
       </ul>
     </div>
