@@ -19,15 +19,14 @@ export class InterceptorService implements HttpInterceptor {
 
     let httpOptions = {}
 
-
     if(token != null){
       httpOptions = {
-        headers: new HttpHeaders({ 'Content-Type': this.getContentType(request.url), 'token': token})
+        headers: new HttpHeaders({'token': token})
       }
     }
     else{
       httpOptions = {
-        headers: new HttpHeaders({ 'Content-Type': this.getContentType(request.url)})
+        headers: new HttpHeaders({ 'Content-Type': 'application/json'})
       }
     }
 
@@ -49,9 +48,8 @@ export class InterceptorService implements HttpInterceptor {
     );
 
   }
-
-  getContentType(url: string): string{
-    let type = url.startsWith("http://localhost:8080/podcast/create")? ' multipart/form-data': 'application/json';
-    return type;
+ 
+  getUrl(request: string){
   }
+
 }

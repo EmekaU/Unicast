@@ -77,8 +77,10 @@ export class PodcastService{
   }
 
   createPodcast(data){
-
-    return this.http.get<JSON>(`${URL}/podcast/create`, data)
+    let httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/zip', responseType: 'text' as 'json'})
+    }
+    return this.http.post<JSON>(`${URL}/podcast/create`, data, httpOptions)
   }
 }
 
