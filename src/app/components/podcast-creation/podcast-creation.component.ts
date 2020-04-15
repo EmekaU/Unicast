@@ -21,13 +21,13 @@ export class PodcastCreationComponent implements OnInit {
     this.username = this.route.parent.snapshot.paramMap.get('username');
   }
 
-  // trackProgress(){
-  //   this.firebaseStore.progressReport.subscribe(
-  //     data => {
-  //       this.uploadProgress = data;
-  //     }
-  //   );
-  // }
+  trackProgress(){
+    this.firebaseStore.progressReport.subscribe(
+      data => {
+        this.uploadProgress = data;
+      }
+    );
+  }
 
   storeFile(event){
     this.file = event.target.files[0];
@@ -40,13 +40,13 @@ export class PodcastCreationComponent implements OnInit {
     podcast["title"] = form.value.title;
     podcast["description"] = form.value.description;
     podcast["category"] = "comedy";
-    console.log(this.file)
 
     this.firebaseStore.upload(this.username, podcast["title"], this.file);
+    this.trackProgress();
     this.firebaseStore.forwardUrl.subscribe(
       url => {
         if(url != null && url != ""){
-          podcast["downloadURL"] = url;
+          podcast["url"] = url;
           this.podService.createPodcast(podcast).subscribe(
             result => {
               console.log(result);
