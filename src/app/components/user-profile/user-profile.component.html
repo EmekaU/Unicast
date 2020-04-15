@@ -17,7 +17,8 @@
         <div class="profile-btns" *ngIf="user != null">
           <button type="button" *ngIf="isLoggedInUser; else subscribe" (click)="editMode = true">EDIT PROFILE</button>
           <ng-template #subscribe>
-            <button (click)="toggleSubscription()">SUBSCRIBE</button> <!--Add Pipe to make uppercase-->
+            <button *ngIf="isSubscribed;" (click)="toggleSubscription()">UNSUBSCRIBE</button>
+            <button *ngIf="!isSubscribed;"(click)="toggleSubscription()">SUBSCRIBE</button> <!--Add Pipe to make uppercase-->
           </ng-template>
         </div>
       </div>

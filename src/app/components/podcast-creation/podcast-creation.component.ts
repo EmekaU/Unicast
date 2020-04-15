@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { PodcastService } from 'src/app/services/unicast-api.service';
 import { ActivatedRoute } from '@angular/router';
-import * as JSZip from 'jszip';
+import { FirebaseStorageService } from 'src/app/services/firebase-storage.service';
+import { Observable } from 'rxjs';
+
 @Component({
   selector: 'app-podcast-creation',
   templateUrl: './podcast-creation.component.html',
@@ -10,40 +12,52 @@ import * as JSZip from 'jszip';
 })
 export class PodcastCreationComponent implements OnInit {
 
-  podcast: File = null;
+  file;
   username: string = '';
-  constructor(private podService: PodcastService, private route:ActivatedRoute) { }
+  uploadProgress = new Observable();
+  constructor(private podService: PodcastService, private route:ActivatedRoute, private firebaseStore:FirebaseStorageService) { }
 
   ngOnInit(): void {
-    this.username = this.route.snapshot.paramMap.get("username");
+    this.username = this.route.parent.snapshot.paramMap.get('username');
   }
 
-  zip(name, file){
-    var zip = new JSZip();
-    zip.file(name, file, {base64: true})
-    return zip
+  // trackProgress(){
+  //   this.firebaseStore.progressReport.subscribe(
+  //     data => {
+  //       this.uploadProgress = data;
+  //     }
+  //   );
+  // }
+
+  storeFile(event){
+    this.file = event.target.files[0];
   }
 
   upload(form: NgForm){
 
-    let formData: {} = {};
-    formData['file'] = this.zip("podcast", this.podcast);
-    //formData["description"] = form.value.description;
-    //formData["title"] = form.value.title;
-    //formData["category"] =  "comedy";
+    let podcast: {} = {};
 
-    console.log(formData);
-     this.podService.createPodcast(formData).subscribe(result => {
-    //   console.log(result);
-     }, 
-     error => {
-       console.log(error);
-     } 
-    );
-  }
+    podcast["title"] = form.value.title;
+    podcast["description"] = form.value.description;
+    podcast["category"] = "comedy";
+    console.log(this.file)
 
-  setBase64String(event){
-    this.podcast = event.target.files[0];
+    this.firebaseStore.upload(this.username, podcast["title"], this.file);
+    this.firebaseStore.forwardUrl.subscribe(
+      url => {
+        if(url != null && url != ""){
+          podcast["downloadURL"] = url;
+          this.podService.createPodcast(podcast).subscribe(
+            result => {
+              console.log(result);
+            },
+            error => {console.log(error);}
+          );
+        }
+        else{
+          console.log(`Invalid URL: ${url}`);
+        }
+      });
   }
 
 }

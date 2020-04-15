@@ -24,6 +24,9 @@ import { PodcastContainerComponent } from './components/podcast-container/podcas
 import { UserDetailsEditComponent } from './components/user-details-edit/user-details-edit.component';
 import { PodcastCardComponent } from './components/podcast-card/podcast-card.component';
 import { PodcastCreationComponent } from './components/podcast-creation/podcast-creation.component';
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireStorageModule } from 'angularfire2/storage';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -46,7 +49,19 @@ import { PodcastCreationComponent } from './components/podcast-creation/podcast-
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    RouterModule
+    RouterModule,
+    AngularFireModule.initializeApp({
+        // Initialize Firebase
+        apiKey: "AIzaSyDah-16NQqyGBCKAjS4X6C47kXVUizIKKE",
+        authDomain: "unicastpodcaststorage.firebaseapp.com",
+        databaseURL: "https://unicastpodcaststorage.firebaseio.com",
+        projectId: "unicastpodcaststorage",
+        storageBucket: "unicastpodcaststorage.appspot.com",
+        messagingSenderId: "803652384740",
+        appId: "1:803652384740:web:e1f8f592e21b56793cf9f1",
+        measurementId: "G-9Z3DC151RQ"
+    }),
+    AngularFireStorageModule
   ],
   providers: [UserAPIService, AuthService, AuthGuard, ImageUtil, {provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true}],
   bootstrap: [AppComponent],

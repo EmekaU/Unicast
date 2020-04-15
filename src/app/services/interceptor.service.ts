@@ -21,7 +21,7 @@ export class InterceptorService implements HttpInterceptor {
 
     if(token != null){
       httpOptions = {
-        headers: new HttpHeaders({'token': token})
+        headers: new HttpHeaders({'Content-Type': 'application/json', 'token': token})
       }
     }
     else{

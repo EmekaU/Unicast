@@ -4,7 +4,7 @@ import { User } from '../models/user.model';
 import { Observable} from 'rxjs';
 
 const URL = "http://localhost:8080" ;
-
+//const URL = "http://api.unicast.live/api";
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json'})
 };
@@ -61,11 +61,9 @@ export class SearchService{
   }
 }
 
-
 @Injectable({
   providedIn: 'root'
 })
-
 export class PodcastService{
 
   constructor(private http: HttpClient){}
@@ -77,10 +75,8 @@ export class PodcastService{
   }
 
   createPodcast(data){
-    let httpOptions = {
-      headers: new HttpHeaders({ 'Content-Type': 'application/zip', responseType: 'text' as 'json'})
-    }
-    return this.http.post<JSON>(`${URL}/podcast/create`, data, httpOptions)
+    // data should be url, title, etc.
+    return this.http.post<JSON>(`${URL}/podcast/create`, data, {responseType: 'json'})
   }
 }
 
