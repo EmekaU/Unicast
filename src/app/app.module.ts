@@ -26,6 +26,8 @@ import { PodcastCardComponent } from './components/podcast-card/podcast-card.com
 import { PodcastCreationComponent } from './components/podcast-creation/podcast-creation.component';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireStorageModule } from 'angularfire2/storage';
+import { PodcastViewComponent } from './components/podcast-view/podcast-view.component';
+import { CommentViewComponent } from './components/comment-view/comment-view.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +44,8 @@ import { AngularFireStorageModule } from 'angularfire2/storage';
     UserDetailsEditComponent,
     PodcastCardComponent,
     PodcastCreationComponent,
+    PodcastViewComponent,
+    CommentViewComponent,
   ],
   imports: [
     CommonModule,

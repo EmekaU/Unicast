@@ -37,7 +37,7 @@
         <li class="list-item" *ngIf="isLoggedInUser" routerLinkActive="active">
           <a [routerLink]="['create']" >CREATE PODCAST</a>
         </li>
-        <li class="list-item" *ngIf="isLoggedInUser" routerLitenkActive="active">
+        <li class="list-item" *ngIf="isLoggedInUser" routerLinkActive="active">
           <a [routerLink]="['subscriptions']" (click)="relaySubscriptions('subscriptions')" >SUBSCRIPTIONS</a>
         </li>
       </ul>

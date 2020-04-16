@@ -20,6 +20,7 @@ export class PodcastContainerComponent implements OnInit {
 
   ngOnInit(): void {
 
+    this.router.navigate(["podcasts/recent"], {relativeTo: this.route})
     //First get the type, then query. Use both values to retrieve podcasts.
     this.route.paramMap.subscribe(
       ParamData => {

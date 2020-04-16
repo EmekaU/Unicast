@@ -22,6 +22,7 @@ export class PodcastCreationComponent implements OnInit {
   }
 
   trackProgress(){
+    // TODO: Change this to just the number. Show modal until it gets to 100%;
     this.firebaseStore.progressReport.subscribe(
       data => {
         this.uploadProgress = data;
@@ -39,7 +40,7 @@ export class PodcastCreationComponent implements OnInit {
 
     podcast["title"] = form.value.title;
     podcast["description"] = form.value.description;
-    podcast["category"] = "comedy";
+    podcast["category"] = form.value.category;
 
     this.firebaseStore.upload(this.username, podcast["title"], this.file);
     this.trackProgress();
