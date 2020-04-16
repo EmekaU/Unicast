@@ -20,7 +20,6 @@ export class PodcastContainerComponent implements OnInit {
 
   ngOnInit(): void {
 
-
     //First get the type, then query. Use both values to retrieve podcasts.
     this.route.paramMap.subscribe(
       ParamData => {

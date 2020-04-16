@@ -75,6 +75,7 @@ export class PodcastService{
   }
 
   createPodcast(data){
+    console.log(data);
     // data should be url, title, etc.
     return this.http.post<JSON>(`${URL}/podcast/create`, data, {responseType: 'json'})
   }

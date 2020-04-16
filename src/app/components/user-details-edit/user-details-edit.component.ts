@@ -8,18 +8,21 @@ import { Subscription } from 'rxjs';
   templateUrl: './user-details-edit.component.html',
   styleUrls: ['./user-details-edit.component.scss']
 })
-export class UserDetailsEditComponent implements OnInit {
+export class UserDetailsEditComponent implements OnInit, OnDestroy {
   @Input() userData: {};
   @Output() userDataChange = new EventEmitter<Object>();
 
   subscription: Subscription;
+  photo: string = '';
 
   constructor(
     private apiUser: UserAPIService,
     private auth: AuthService
     ) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.photo = this.userData["photo"];
+  }
 
   openDialog(){
     document.getElementById('file-upload').click();
@@ -35,7 +38,7 @@ export class UserDetailsEditComponent implements OnInit {
     reader.onloadend = function(){
 
       base64String = reader.result;
-      self.userData['photo'] = base64String;
+      self.photo = base64String;
     };
 
     reader.readAsDataURL(input.files[0]);
@@ -47,22 +50,27 @@ export class UserDetailsEditComponent implements OnInit {
       'username': this.userData['username'],
       'bio': this.userData['bio'],
       'email': this.userData['email'],
-      'photo': this.userData['photo']
+      'photo': this.photo
     }
-    this.apiUser.updateUser(userData).subscribe(
+    this.subscription = this.apiUser.updateUser(userData).subscribe(
       token => {
-        console.log(token)
         this.auth.saveJWTToLocalStorage(token);
+        console.log("saved")
         this.userDataChange.emit(userData);
       },
       error => {
         // Let user know that data wasn't updated.
       }
-    ).unsubscribe()
+    )
   }
 
   cancel(){
     this.userDataChange.emit(null);
   }
-
+  
+  ngOnDestroy(){
+    if(this.subscription != null && this.subscription != undefined){
+      this.subscription.unsubscribe();
+    }
+  }
 }

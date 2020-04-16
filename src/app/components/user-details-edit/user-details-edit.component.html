@@ -1,15 +1,15 @@
 <div class="user-edit-view">
 
   <div class="img_wrap">
-    <img [src]="userData['photo']" (click)="openDialog()" style="cursor: pointer" />
+    <img [src]="photo" (click)="openDialog()" style="cursor: pointer" />
   </div>
 
   <form #f="ngForm" class="user-details">
-    <input type="file" class="hide" name="image" id="file-upload" accept=".png, .jpg, .jpeg" (change)="setImageURL($event)" >
+    <input type="file" class="hide" name="image" id="file-upload" (change)="setImageURL($event)" >
 
-    <input type="text" name="bio" [(ngModel)]="userData['bio']" id="bio" maxlength="100" class="form-control px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:shadow-outline w-full" placeholder="bio" ngModel />
+    <input type="text" name="bio" [ngModel]="userData['bio']" id="bio" maxlength="100" class="form-control px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:shadow-outline w-full" placeholder="bio" ngModel />
 
-    <input type="email" id="email" [(ngModel)]="userData['email']" name="email" class="form-control px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:shadow-outline w-full" placeholder="Email" ngModel/>
+    <input type="email" id="email" [ngModel]="userData['email']" name="email" class="form-control px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:shadow-outline w-full" placeholder="Email" ngModel/>
 
     <div class="btns">
       <button type="button" class="auth-btn text-white font-bold py-2 px-4 uppercase rounded save" (click)="save(f)">Save Changes</button>
