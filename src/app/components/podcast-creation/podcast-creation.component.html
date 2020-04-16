@@ -2,7 +2,7 @@
   <form #f="ngForm">
     <div class="form-group">
       <label for="podcast">Podcast</label>
-      <input type="file" name="podcast" (change)="storeFile($event)" id="podcast-file" ngModel/>
+      <input type="file" name="podcast" (change)="storeFile($event)" id="podcast-file" accept=".mp3, .wav" ngModel/>
     </div>
 
     <div class="form-group">

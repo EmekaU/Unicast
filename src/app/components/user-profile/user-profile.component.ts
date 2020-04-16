@@ -87,5 +87,4 @@ export class UserProfileComponent implements OnInit {
   ngOnDestroy(): void{
     this.subscription.unsubscribe();
   }
-
 }

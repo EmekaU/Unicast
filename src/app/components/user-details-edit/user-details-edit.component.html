@@ -5,7 +5,7 @@
   </div>
 
   <form #f="ngForm" class="user-details">
-    <input type="file" class="hide" name="image" id="file-upload" (change)="setImageURL($event)" >
+    <input type="file" class="hide" name="image" id="file-upload" accept=".png, .jpg, .jpeg" (change)="setImageURL($event)" >
 
     <input type="text" name="bio" [(ngModel)]="userData['bio']" id="bio" maxlength="100" class="form-control px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:shadow-outline w-full" placeholder="bio" ngModel />
 

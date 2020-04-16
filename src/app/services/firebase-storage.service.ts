@@ -11,7 +11,6 @@ export class FirebaseStorageService {
   forwardUrl = new Subject();
   constructor(private firebaseStore: AngularFireStorage) { }
 
-  
   getStorageRef(username: string, filename: string):AngularFireStorageReference {
     return this.firebaseStore.ref(`${username}/${filename}`)
   }

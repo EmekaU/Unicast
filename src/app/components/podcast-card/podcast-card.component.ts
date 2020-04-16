@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-podcast-card',
@@ -6,9 +6,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./podcast-card.component.scss']
 })
 export class PodcastCardComponent implements OnInit {
+  @Input() podcast: {}
 
   constructor() { }
-  podcast: {}
+  
   ngOnInit(): void {}
 
 
