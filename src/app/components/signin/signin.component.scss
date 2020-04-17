@@ -25,3 +25,7 @@ input:active,:visited{
 :-ms-input-placeholder{
   color: #eee;
 }
+
+input.ng-invalid.ng-touched{ 
+  border: 1px solid red;
+}

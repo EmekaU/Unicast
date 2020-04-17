@@ -3,8 +3,17 @@
     @apply py-2;
     @apply rounded;
     @apply bg-transparent;
+    @apply text-gray-800;
+  
+  }
+
+  .sml-txt-red{
+    @apply px-4;
+    @apply py-2;
+    @apply rounded;
+    @apply bg-transparent;
     @apply text-red-800;
-    transition: 200ms;
+  
   }
 
   .btn:hover {
