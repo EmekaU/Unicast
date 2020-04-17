@@ -1,4 +1,6 @@
-<div class=" h-full w-4/5 mt-5 m-10 mr-20 rounded-lg text-center podcast-container">
+<div class="shadow-inner w-11/12 bg-gray-400 mt-5 m-10 mr-20
+rounded-lg text-center flex flex-row flex-wrap overflow-hidden 
+overflow-y-auto podcast-container">
     <div>{{ podcasts["id"] }}</div>
     <app-podcast-card *ngFor="let podcast of podcasts" [podcast]="podcast"></app-podcast-card>
 </div>
