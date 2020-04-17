@@ -2,16 +2,22 @@
     <form (ngSubmit)="onSignIn(f)" #f="ngForm" class="form-card shadow-lg">
     <div class="relative w-full mb-3 form-group">
         <label class="block uppercase text-black text-xs font-bold mb-2" for="username">Username</label>
-        <input type="text" name="username" id="username" class="form-control px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:shadow-outline w-full" placeholder="Username" ngModel />
+        <input type="text" name="username" id="username" class="form-control px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:shadow-outline w-full" placeholder="Username" required ngModel />
     </div>
     <div class="relative w-full mb-3 form-group">
         <label for="password" class="block uppercase text-black text-xs font-bold mb-2">Password</label>
-        <input type="password" name="password" class="px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:shadow-outline w-full" placeholder="Password" ngModel />
+        <input type="password" name="password" class="px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:shadow-outline w-full" placeholder="Password" required ngModel />
     </div>
     <div class="text-center mt-6">
-        <button class="auth-btn hover:text-black text-white font-bold py-2 px-4 uppercase rounded w-full" type="submit" [disabled]="!f.valid">
+        <button 
+        class="auth-btn hover:text-black text-white font-bold py-2 px-4 uppercase rounded w-full" type="submit" [disabled]="!f.valid">
             Sign In
         </button>
+        <div>
+            <p>Please enter The correct value</p>
+        </div>
+        <div *ngIf="loading" class="spinner mt-5">
+        </div>
     </div>
 </form>
 </div>

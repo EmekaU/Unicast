@@ -4,6 +4,7 @@ import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { User } from 'src/app/models/user.model';
+import { take, finalize } from 'rxjs/operators';
 
 @Component({
   selector: 'app-signup',
@@ -12,6 +13,8 @@ import { User } from 'src/app/models/user.model';
 })
 export class SignupComponent implements OnInit {
 
+  loading: boolean
+
   constructor(private httpUser: UserAPIService , private auth: AuthService, private router: Router) { }
 
   ngOnInit(): void {
@@ -19,10 +22,12 @@ export class SignupComponent implements OnInit {
   }
 
   onSignUp(form: NgForm){
+    this.loading = true
     let user = new User(form.value.username, form.value.password)
     user.setEmail(form.value.email)
 
-    this.httpUser.signUpUser(user).subscribe( data => {
+    this.httpUser.signUpUser(user).pipe(
+      finalize(() => this.loading = false)).subscribe( data => {
       this.auth.saveJWTToLocalStorage(data)
       this.auth.printToken()
       this.router.navigate(["hub"])
