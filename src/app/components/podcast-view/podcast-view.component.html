@@ -1,6 +1,8 @@
 <div>
-    <app-podcast-card *ngFor="let podcast of podcasts" [podcast]="podcast"></app-podcast-card>
-</div>
-<div>
-    <app-comment-view [comments]='podcasts["comments"]'></app-comment-view>
+    <div class="podcast-list">
+        <app-podcast-card *ngFor="let podcast of podcasts" [podcast]="podcast" (click)="setCommentViewDetails(podcast)"></app-podcast-card>
+    </div>
+    <div class="comment-view">
+        <app-comment-view [comments]='currentPodcast["comments"]' [id]='currentPodcast["id"]'></app-comment-view>
+    </div>
 </div>

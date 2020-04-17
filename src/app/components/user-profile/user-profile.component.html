@@ -30,13 +30,13 @@
     <div class="nav">
       <ul class="sub-list">
         <li class="list-item" routerLinkActive="active">
-          <a [routerLink]="['podcasts']" (click)="relayUserField('podcasts')">MY PODCASTS</a>
+          <a [routerLink]="['podcasts']">MY PODCASTS</a>
         </li>
         <li class="list-item" *ngIf="isLoggedInUser" routerLinkActive="active">
-          <a [routerLink]="['create']" >CREATE PODCAST</a>
+          <a [routerLink]="['create']">CREATE PODCAST</a>
         </li>
         <li class="list-item" *ngIf="isLoggedInUser" routerLinkActive="active">
-          <a [routerLink]="['subscriptions']" (click)="relayUserField('subscriptions')" >SUBSCRIPTIONS</a>
+          <a [routerLink]="['subscriptions']">SUBSCRIPTIONS</a>
         </li>
       </ul>
     </div>

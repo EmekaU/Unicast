@@ -34,6 +34,9 @@ export class UserProfileComponent implements OnInit {
         this.isSubscribed = this.setSubscription(this.user);
         this.isLoggedInUser = this.user["username"] == this.myUsername;
         this.user['photo'] = this.imgUtils.getImgUrl(this.user['photo']);
+        this.userService.forwardSubscriptions.next(this.user["subscriptions"]);
+        this.forwardPodcasts();
+        this.forwardSubscriptions();
       });
     } else {
       this.subscription = this.apiUser.getUser(this.route.snapshot.paramMap.get('username')).subscribe( (data: JSON) => {
@@ -41,6 +44,8 @@ export class UserProfileComponent implements OnInit {
         this.isSubscribed = this.setSubscription(this.user);
         this.isLoggedInUser = this.user["username"] == this.myUsername;
         this.user['photo'] = this.imgUtils.getImgUrl(this.user['photo']);
+        this.forwardPodcasts();
+        this.forwardSubscriptions();
       });
     }
   }
@@ -54,8 +59,12 @@ export class UserProfileComponent implements OnInit {
     }
   }
 
-  relayUserField(destination){
-    this.userService.forwardUserField.next(this.user[destination]);
+  forwardPodcasts(){
+    this.userService.forwardPodcasts.next(this.user["podcasts"]);
+  }
+  
+  forwardSubscriptions(){
+    this.userService.forwardSubscriptions.next(this.user["subscriptions"]);
   }
 
   setSubscription(user): boolean{

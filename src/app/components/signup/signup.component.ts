@@ -32,6 +32,12 @@ export class SignupComponent implements OnInit {
       this.auth.printToken()
       this.router.navigate(["hub"])
       // route to hub or page user redirected from.
+    },
+    error => {
+      // Alert the User of Error
+    },
+    () => {
+      // Call succesfully completed
     });
 
   }

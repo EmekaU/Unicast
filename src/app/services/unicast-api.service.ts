@@ -76,13 +76,23 @@ export class PodcastService{
 
   createPodcast(data){
     // data should be url, title, etc.
-    return this.http.post<JSON>(`${URL}/podcast/create`, data, {responseType: 'json'})
+    return this.http.post<JSON>(`${URL}/podcast/create`, data)
   }
 
   getPodcastsBelongingTo(username: string){
-    return this.http.get<[JSON]>(`${URL}/podcasts/get/${username}`);
+    return this.http.get<[JSON]>(`${URL}/podcast/getByUsername/${username}`);
+  }
+
+  addComments(message: string, podcast_id: number ){
+    let data = {'message': message, 'podcast_id': podcast_id}
+    return this.http.post<JSON>(`${URL}/podcast/comment/add`, data);
+  }
+
+  getCommentsForPodcastWithId(id: number){
+    return this.http.get<[JSON]>(`${URL}/podcast/getById/comments/${id}`);
   }
 
 }
+
 
 

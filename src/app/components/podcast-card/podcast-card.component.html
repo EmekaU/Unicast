@@ -5,7 +5,9 @@
       <hr>
       <p class="podcast-description">{{ podcast["description"] }}</p>
     </div>
-    <podcast-btn>
-      <button (click)="play()">PLAY</button>
-    </podcast-btn>
+    <div class="podcast-btn">
+      <audio controls>
+        <source [src]='podcast["url"]'>
+      </audio>
+    </div>
 </div>
