@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PodcastService } from 'src/app/services/unicast-api.service';
+import { take, finalize } from 'rxjs/operators';
 
 //
 // THIS COMPONENT IS USED IN THE HUB AND USER PROFILE
@@ -12,6 +13,8 @@ import { PodcastService } from 'src/app/services/unicast-api.service';
   styleUrls: ['./podcast-container.component.scss']
 })
 export class PodcastContainerComponent implements OnInit {
+  
+  loading: boolean;
   type: string;
   category: string;
   podcasts = [];
@@ -19,6 +22,8 @@ export class PodcastContainerComponent implements OnInit {
   constructor(private route: ActivatedRoute, private router: Router, private podcastAPI: PodcastService) {}
 
   ngOnInit(): void {
+
+    
 
     //this.router.navigate(["podcasts/recent"], {relativeTo: this.route})
     //First get the type, then query. Use both values to retrieve podcasts.
@@ -32,12 +37,13 @@ export class PodcastContainerComponent implements OnInit {
           queryData => {
             this.category = queryData['params']["category"];
 
+            this.loading = true
             // Get Podcasts
-            this.podcastAPI.getPodcasts(this.type, this.category).subscribe(
+            this.podcastAPI.getPodcasts(this.type, this.category).pipe(
+              finalize(() => this.loading = false)).subscribe(
               podcasts => {
                 this.podcasts = podcasts;
               },
-
               error => { // TODO:
                 //this.router.navigate(['../'], {relativeTo: this.route})
                 //OR

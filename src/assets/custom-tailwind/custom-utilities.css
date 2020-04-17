@@ -16,7 +16,12 @@
     color: black !important;
     pointer-events: none;
   }
-  
+  .spinnerlg {
+    position: relative;
+    color: black !important;
+    pointer-events: none;
+  }
+
   .spinner::after {
     content: '';
     position: absolute !important;
@@ -26,6 +31,23 @@
     width: 1em;
     height: 1em;
     border: 3px solid currentColor;
+    border-radius: 9999px;
+    border-right-color: transparent;
+    border-top-color: transparent;
+    animation: spinAround 500ms infinite linear;
+  }
+
+  
+  .spinnerlg::after {
+    content: '';
+    position: absolute !important;
+    top: calc(50% - (1em / 2));
+    left: calc(50% - (1em / 2));
+    display: block;
+    width: 10em;
+    height: 10em;
+    margin-right: 20px;
+    border: 10px solid currentColor;
     border-radius: 9999px;
     border-right-color: transparent;
     border-top-color: transparent;
