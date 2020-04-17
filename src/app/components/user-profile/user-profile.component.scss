@@ -1,14 +1,17 @@
 .user_profile{
 
   scroll-behavior: smooth;
+  margin: 0;
+  padding: 0;
+
 }
 
 .profile_card{
   width: 80%;
-  margin: 0 auto;
+  margin: 0;
   position: relative;
   overflow-y: hidden;
-  padding: 15px 30px;
+  padding: 5px 5px;
   width: 100%;
   border-bottom: 2px black solid;
 }
@@ -17,15 +20,21 @@
   background-color: #eef;
   border-radius: 65px;
   border: 2px #eef solid;
+  margin-top: 0;
+  padding-top: 0;
 }
 .img_wrap img{
   max-width: 128px;
+  margin-top: 0;
+  padding-top: 0;
 }
 
 .img_wrap, .user_details{
   vertical-align: middle;
   display: inline-block;
   margin-right: 30px;
+  margin-top: 0;
+  padding-top: 0;
 }
 
 .profile-btns{
