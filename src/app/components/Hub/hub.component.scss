@@ -3,12 +3,18 @@
   background-color: #cccccc;
 }
 
+.hub-header{
+  text-align: center;
+}
+
 .img_wrap{
   background-color: transparent;
-  margin-top: 0;
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 20px;
 }
 
 .img_wrap img{
-  max-width: 40px;
+  max-width: 55px;
   margin-top: 0;
 }

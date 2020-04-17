@@ -23,6 +23,10 @@ export class HubComponent implements OnInit {
 
       error => {
         // Show Modal. Redirect to signInPage?
+      },
+      
+      () => {
+
       }
     )
   }

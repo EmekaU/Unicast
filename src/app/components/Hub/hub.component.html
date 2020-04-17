@@ -1,8 +1,8 @@
 <div class="hub-view h-auto">
   <div class="hub-header">
     <app-search-bar></app-search-bar>
-    <div (click)="redirectToUserProfile()" class="img_wrap flex">
-      <img class='rounded-full text-white shadow-lg'[src]="user['photo']"/>
+    <div *ngIf="user != null" (click)="redirectToUserProfile()" class="img_wrap">
+      <img [src]="user['photo']"/>
     </div>
   </div>
   <div class='rounded-lg w-full'>

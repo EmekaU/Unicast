@@ -1,4 +1,4 @@
-<div >
+<div class="search-tag">
     <form (ngSubmit)="search(f)" #f="ngForm" class="search-box">
         <span class="search-icon">
         <button>
@@ -18,7 +18,7 @@
         <li class="dropdown-item" *ngFor="let object of list" style="position: relative">
           <div *ngIf="object.username; else podcast" style="height: 100%" (click)="redirectToUserProfile(object)">
             <span>{{ object.username }}</span>
-            <img [src]="getImagePath(object.photo)" style="max-width: 100%; max-height: 100%; display: inline; float: right"/>
+            <img [src]="getImagePath(object.photo)" style="max-width: 100%; max-height: 100%; float: right"/>
           </div>
           <ng-template #podcast>
             <div>
