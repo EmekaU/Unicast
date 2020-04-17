@@ -14,13 +14,13 @@ import { PodcastService } from 'src/app/services/unicast-api.service';
 export class PodcastContainerComponent implements OnInit {
   type: string;
   category: string;
-  podcasts = {};
+  podcasts = [];
 
   constructor(private route: ActivatedRoute, private router: Router, private podcastAPI: PodcastService) {}
 
   ngOnInit(): void {
 
-    this.router.navigate(["podcasts/recent"], {relativeTo: this.route})
+    //this.router.navigate(["podcasts/recent"], {relativeTo: this.route})
     //First get the type, then query. Use both values to retrieve podcasts.
     this.route.paramMap.subscribe(
       ParamData => {
@@ -36,7 +36,10 @@ export class PodcastContainerComponent implements OnInit {
             // Get Podcasts
             this.podcastAPI.getPodcasts(this.type, this.category).subscribe(
               podcasts => {
-                this.podcasts = podcasts;
+                
+                for(let key in podcasts){
+                  this.podcasts.push(podcasts[key])
+                }
               },
 
               error => { // TODO:
@@ -47,5 +50,10 @@ export class PodcastContainerComponent implements OnInit {
             });
         });
     });
+  }
+
+  extractData(res: Response){
+    let body = <any[]><unknown>res.json();
+    return body || [];
   }
 }

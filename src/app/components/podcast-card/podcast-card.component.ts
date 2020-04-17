@@ -11,8 +11,7 @@ export class PodcastCardComponent implements OnInit {
   constructor() { }
   
   ngOnInit(): void {}
-
-
+  
   play(){
 
   }

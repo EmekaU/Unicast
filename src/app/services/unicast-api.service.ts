@@ -71,7 +71,7 @@ export class PodcastService{
   getPodcasts(type: string, category: string){
     type = type == undefined || type == ""? "": `/${type}`;;
     category = category == undefined || category == ""? "": `?category=${category}`;
-    return this.http.get<JSON>(`${URL}/podcast/get${type}${category}`, {responseType: 'json'})
+    return this.http.get<JSON>(`${URL}/podcast/get${type}${category}`)
   }
 
   createPodcast(data){
