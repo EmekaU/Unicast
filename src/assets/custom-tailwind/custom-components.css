@@ -43,8 +43,6 @@
     @apply px-2;
     @apply py-1;
     @apply text-gray-700;
-    @apply relative;
-    @apply bg-white;
     @apply bg-white;
     @apply rounded;
     @apply text-sm;
