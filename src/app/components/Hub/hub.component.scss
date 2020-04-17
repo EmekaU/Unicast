@@ -12,9 +12,11 @@
   display: inline-block;
   vertical-align: middle;
   margin-left: 20px;
+  cursor: pointer;
 }
 
 .img_wrap img{
   max-width: 55px;
   margin-top: 0;
+  border-radius: 10%;
 }
