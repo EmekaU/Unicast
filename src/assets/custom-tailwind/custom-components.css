@@ -23,17 +23,19 @@
     @apply font-semibold;
   }
 
+
   .sidebar_a:hover{
     @apply -translate-y-1;
     @apply border-2;
     @apply duration-500;
     @apply ease-in-out;
-    @apply cursor-pointer
-
-
-
+    @apply cursor-pointer;
+    @apply bg-black;
+    @apply text-white
   }
 
-  .sidebar_li:active{
-    
+  .sidebar_a:active{
+    @apply bg-black;
+    @apply text-white
   }
+
