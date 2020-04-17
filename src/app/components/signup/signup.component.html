@@ -17,6 +17,8 @@
                                 rounded h-10 rounded shadow hover:black focus:shadow-outline mr-1 mb-1 w-full" type="submit" style="transition: all 0.15s ease 0s;" [disabled]="!f.valid">
                         Sign Up
                     </button>
+                    <div *ngIf="loading" class="spinner mt-5">
+                    </div>
                 </div>
                 <div class="text-center p-4"> Already signed in? Please <span class="link"><a [routerLink]="['/signin']">login</a></span></div>
 </form>
