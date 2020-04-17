@@ -71,14 +71,18 @@ export class PodcastService{
   getPodcasts(type: string, category: string){
     type = type == undefined || type == ""? "": `/${type}`;;
     category = category == undefined || category == ""? "": `?category=${category}`;
-    return this.http.get<JSON>(`${URL}/podcast/get${type}${category}`)
+    return this.http.get<[JSON]>(`${URL}/podcast/get${type}${category}`)
   }
 
   createPodcast(data){
-    console.log(data);
     // data should be url, title, etc.
     return this.http.post<JSON>(`${URL}/podcast/create`, data, {responseType: 'json'})
   }
+
+  getPodcastsBelongingTo(username: string){
+    return this.http.get<[JSON]>(`${URL}/podcasts/get/${username}`);
+  }
+
 }
 
 

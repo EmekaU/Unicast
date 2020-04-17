@@ -16,7 +16,7 @@ export class SubscriptionListComponent implements OnInit,OnDestroy {
   constructor(private router: Router, private route: ActivatedRoute, private userService: UserService) { }
 
   ngOnInit(): void {
-    this.subscription = this.userService.forwardSubscription.subscribe( (data: []) => {
+    this.subscription = this.userService.forwardUserField.subscribe( (data: []) => {
       this.subscriptions = data;
       console.log(this.subscriptions);
     });

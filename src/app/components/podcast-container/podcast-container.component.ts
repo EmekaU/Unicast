@@ -25,7 +25,6 @@ export class PodcastContainerComponent implements OnInit {
     this.route.paramMap.subscribe(
       ParamData => {
         // Get Param
-        console.log(ParamData)
         this.type = ParamData['params']["type"] || "" ;
 
         // Get QueryParam
@@ -36,10 +35,7 @@ export class PodcastContainerComponent implements OnInit {
             // Get Podcasts
             this.podcastAPI.getPodcasts(this.type, this.category).subscribe(
               podcasts => {
-                
-                for(let key in podcasts){
-                  this.podcasts.push(podcasts[key])
-                }
+                this.podcasts = podcasts;
               },
 
               error => { // TODO:
@@ -50,10 +46,5 @@ export class PodcastContainerComponent implements OnInit {
             });
         });
     });
-  }
-
-  extractData(res: Response){
-    let body = <any[]><unknown>res.json();
-    return body || [];
   }
 }

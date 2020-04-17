@@ -54,8 +54,8 @@ export class UserProfileComponent implements OnInit {
     }
   }
 
-  relaySubscriptions(destination){
-    this.userService.forwardSubscription.next(this.user[destination]);
+  relayUserField(destination){
+    this.userService.forwardUserField.next(this.user[destination]);
   }
 
   setSubscription(user): boolean{
@@ -85,6 +85,8 @@ export class UserProfileComponent implements OnInit {
   }
   
   ngOnDestroy(): void{
-    this.subscription.unsubscribe();
+    if(this.subscription != undefined && this.subscription != null){
+      this.subscription.unsubscribe();
+    }
   }
 }
