@@ -1,1 +1,6 @@
-<p>podcast-view works!</p>
+<div>
+    <app-podcast-card *ngFor="let podcast of podcasts" [podcast]="podcast"></app-podcast-card>
+</div>
+<div>
+    <app-comment-view [comments]='podcasts["comments"]'></app-comment-view>
+</div>

@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { UserAPIService } from 'src/app/services/unicast-api.service';
+import { AuthService } from 'src/app/services/auth.service';
+import { Router } from '@angular/router';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-hub',
@@ -7,9 +11,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HubComponent implements OnInit {
 
-  constructor() { }
+  user:JSON = null
+
+  constructor(private userApi: UserAPIService, private auth: AuthService, private router: Router, private userService: UserService) { }
 
   ngOnInit(): void {
+    this.userApi.getUser(this.auth.getDecodedAccessToken(this.auth.retrieveToken())["username"]).subscribe(
+      user => {
+        this.user = user;
+      },
+
+      error => {
+        // Show Modal. Redirect to signInPage?
+      }
+    )
+  }
+
+  redirectToUserProfile(){
+    this.userService.forwardUser.next(this.user);
+    this.router.navigate([`/user-profile/${this.user["username"]}`]);
   }
 
 }
