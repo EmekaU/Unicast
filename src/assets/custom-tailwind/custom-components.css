@@ -39,3 +39,27 @@
     @apply text-white
   }
 
+  .create_input{
+    @apply px-2;
+    @apply py-1;
+    @apply text-gray-700;
+    @apply relative;
+    @apply bg-white;
+    @apply bg-white;
+    @apply rounded;
+    @apply text-sm;
+    @apply shadow;
+    @apply outline-none;
+    
+  }
+
+  .create_label{
+    @apply px-5;
+    @apply py-3;
+    @apply rounded;
+    @apply bg-transparent;
+    @apply text-gray-900;
+    transition: 200ms;
+
+  }
+
