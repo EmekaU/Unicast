@@ -47,9 +47,9 @@ export class UserDetailsEditComponent implements OnInit, OnDestroy {
 
   save(f: NgForm){
     let userData = {
-      'username': this.userData['username'],
-      'bio': this.userData['bio'],
-      'email': this.userData['email'],
+      'username': this.userData["username"],
+      'bio': f.value.bio,
+      'email': f.value.email,
       'photo': this.photo
     }
     this.subscription = this.apiUser.updateUser(userData).subscribe(

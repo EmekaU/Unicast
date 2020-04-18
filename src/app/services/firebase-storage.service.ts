@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFireStorage, AngularFireStorageReference, AngularFireUploadTask } from 'angularfire2/storage';
 import { BehaviorSubject, Subject } from 'rxjs';
 import { PodcastService } from './unicast-api.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { UserService } from './user.service';
 
 
@@ -11,7 +11,7 @@ import { UserService } from './user.service';
 })
 export class FirebaseStorageService {
 
-  constructor(private firebaseStore: AngularFireStorage, private podService: PodcastService, private router: Router, private userService: UserService) { }
+  constructor(private firebaseStore: AngularFireStorage, private podService: PodcastService, private route: ActivatedRoute, private router: Router, private userService: UserService) { }
 
   getStorageRef(username: string, filename: string):AngularFireStorageReference {
     return this.firebaseStore.ref(`${username}/${filename}`)
@@ -34,9 +34,9 @@ export class FirebaseStorageService {
           result => {
             console.log(result);
             self.userService.forwardPodcasts.next(result);
-            self.router.navigate(["../podcasts"]);
+            self.router.navigate([`/user-profile/${username}/podcasts`]);
           },
-
+          
           error => {
             alert("Podcast was not created. Please try again");
           }

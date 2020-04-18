@@ -28,7 +28,7 @@ export class UserAPIService{
   }
 
   updateUser(user): Observable<string>{
-
+    console.log(user);
     return this.http.post<string>(`${URL}/user/update`, JSON.stringify(user), {responseType: 'text' as 'json'})
   }
 
