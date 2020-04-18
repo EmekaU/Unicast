@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { FirebaseStorageService } from 'src/app/services/firebase-storage.service';
 import { Observable } from 'rxjs';
 import { UserService } from 'src/app/services/user.service';
+import { take, finalize } from 'rxjs/operators';
 
 @Component({
   selector: 'app-podcast-creation',
@@ -15,6 +16,7 @@ export class PodcastCreationComponent implements OnInit {
 
   file;
   username: string = '';
+  loading: boolean;
   uploadProgress = new Observable();
   constructor(private podService: PodcastService, private userService: UserService, 
      private route:ActivatedRoute, private router: Router,
@@ -38,6 +40,7 @@ export class PodcastCreationComponent implements OnInit {
   }
 
   upload(form: NgForm){
+    this.loading = true
 
     let podcast: {} = {};
 
@@ -51,7 +54,8 @@ export class PodcastCreationComponent implements OnInit {
       url => {
         if(url != null && url != ""){
           podcast["url"] = url;
-          this.podService.createPodcast(podcast).subscribe(
+          this.podService.createPodcast(podcast).pipe(
+            finalize(() => this.loading = false)).subscribe(
             result => {
               console.log(result);
               this.userService.forwardPodcasts.next(result);
