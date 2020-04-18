@@ -1,7 +1,7 @@
-<div class="podcast-container shadow-inner w-11/12 bg-gray-400 
-rounded-lg text-center overflow-hidden 
-">
-<div *ngIf="loading" class="items-center content-center">
+<div class="shadow-inner w-11/12 bg-gray-400 mt-5 m-10 mr-20
+rounded-lg text-center flex flex-row flex-wrap overflow-hidden 
+overflow-y-auto podcast-container">
+<div *ngIf="loading" class="h-auto items-center content-center">
     <div class="spinnerlg"></div>
 </div>
     <app-podcast-card *ngFor="let podcast of podcasts" [podcast]="podcast"></app-podcast-card>
