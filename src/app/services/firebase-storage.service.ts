@@ -18,10 +18,16 @@ export class FirebaseStorageService {
   upload(username, title, file){
 
     var uploadTask:AngularFireUploadTask = this.getStorageRef(username, title).put(file);
-    console.log("getting url...")
-    uploadTask.then(function(snapshot){
-      console.log(snapshot.downloadURL)
-      this.forwardUrl(snapshot.downloadURL);
+    uploadTask.then(function(data){
+      console.log(data);
     })
+    
+    this.getStorageRef(username, title).getDownloadURL().subscribe( 
+      (data) => {
+        console.log(data);
+    },
+    error => {
+      console.log(error);
+    });
   }
 }

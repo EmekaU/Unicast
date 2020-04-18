@@ -2,7 +2,7 @@
   <div class="hub-header">
     <app-search-bar></app-search-bar>
     <div *ngIf="user != null" (click)="redirectToUserProfile()" class="img_wrap">
-      <img [src]="user['photo']" alt="profile"/>
+      <img [src]="getImgPath()" alt="profile"/>
     </div>
   </div>
   <div class='rounded-lg w-full'>

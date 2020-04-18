@@ -3,7 +3,7 @@ import { UserAPIService } from 'src/app/services/unicast-api.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
-
+import { ImageUtil } from "src/app/utilities/image-util";
 @Component({
   selector: 'app-hub',
   templateUrl: './hub.component.html',
@@ -13,7 +13,7 @@ export class HubComponent implements OnInit {
 
   user:JSON = null
 
-  constructor(private userApi: UserAPIService, private auth: AuthService, private router: Router, private userService: UserService) { }
+  constructor(private userApi: UserAPIService, private auth: AuthService, private imgUtils: ImageUtil, private router: Router, private userService: UserService) { }
 
   ngOnInit(): void {
     this.userApi.getUser(this.auth.getDecodedAccessToken(this.auth.retrieveToken())["username"]).subscribe(
@@ -35,6 +35,10 @@ export class HubComponent implements OnInit {
   redirectToUserProfile(){
     this.userService.forwardUser.next(this.user);
     this.router.navigate([`/user-profile/${this.user["username"]}`]);
+  }
+
+  getImgPath(){
+    return this.imgUtils.getImgUrl(this.user["photo"]);
   }
 
 }
