@@ -26,16 +26,6 @@ export class PodcastCreationComponent implements OnInit {
     this.username = this.route.parent.snapshot.paramMap.get('username');
   }
 
-  trackProgress(){
-    // TODO: Change this to just the number. Show modal until it gets to 100%;
-    this.firebaseStore.progressReport.pipe(
-      finalize(() => this.loading = false)).subscribe(
-      data => {
-        this.uploadProgress = data;
-      }
-    ).unsubscribe();
-  }
-
   storeFile(event){
     this.file = event.target.files[0];
   }
@@ -50,7 +40,6 @@ export class PodcastCreationComponent implements OnInit {
     podcast["category"] = form.value.category;
 
     this.firebaseStore.upload(this.username, podcast["title"], this.file);
-    this.trackProgress();
     this.firebaseStore.forwardUrl.subscribe(
       url => {
         console.log(url);
