@@ -14,6 +14,9 @@
         <input type="text" aria-label="Search" class="search form-control" autocomplete="on" id="search-input" name="query" placeholder="Search"  speech ngModel />
     </form>
 
+    <div *ngIf="loading" class="spinner mt-5">
+    </div>
+
     <div class="dropdown-menu"  *ngIf="list != null">
         <li class="dropdown-item" *ngFor="let object of list" style="position: relative">
           <div *ngIf="object.username; else podcast" style="height: 100%" (click)="redirectToUserProfile(object)">

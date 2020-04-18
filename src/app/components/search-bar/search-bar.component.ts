@@ -6,12 +6,16 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { ImageUtil } from 'src/app/utilities/image-util';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
+import { take, finalize } from 'rxjs/operators';
+
 @Component({
   selector: 'app-search-bar',
   templateUrl: './search-bar.component.html',
   styleUrls: ['./search-bar.component.scss'],
 })
 export class SearchBarComponent implements OnInit {
+
+  loading: boolean;
   list:Array<any>
   subscription: Subscription;
   constructor(
@@ -24,7 +28,9 @@ export class SearchBarComponent implements OnInit {
   ngOnInit(): void {}
 
   search(f: NgForm){
-    this.subscription = this.searchService.wildSearch(f.value.query).subscribe(
+    this.loading = true
+    this.subscription = this.searchService.wildSearch(f.value.query).pipe(
+      finalize(() => this.loading = false)).subscribe(
       data => {
         this.list = this.SortAndLoadList(data["users"], data["podcasts"]);
       },
