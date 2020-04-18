@@ -4,6 +4,7 @@ import { PodcastService } from 'src/app/services/unicast-api.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FirebaseStorageService } from 'src/app/services/firebase-storage.service';
 import { Observable } from 'rxjs';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-podcast-creation',
@@ -15,7 +16,9 @@ export class PodcastCreationComponent implements OnInit {
   file;
   username: string = '';
   uploadProgress = new Observable();
-  constructor(private podService: PodcastService, private route:ActivatedRoute, private router: Router, private firebaseStore:FirebaseStorageService) { }
+  constructor(private podService: PodcastService, private userService: UserService, 
+     private route:ActivatedRoute, private router: Router,
+      private firebaseStore:FirebaseStorageService) { }
 
   ngOnInit(): void {
     this.username = this.route.parent.snapshot.paramMap.get('username');
@@ -50,9 +53,9 @@ export class PodcastCreationComponent implements OnInit {
           podcast["url"] = url;
           this.podService.createPodcast(podcast).subscribe(
             result => {
-              this.router.navigate(["../podcasts"]);
-              console.log("result:");
               console.log(result);
+              this.userService.forwardPodcasts.next(result);
+              this.router.navigate(["../podcasts"]);
             },
             error => {console.log(error);}
           )

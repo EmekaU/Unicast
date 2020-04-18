@@ -1,15 +1,20 @@
-<section>
+<section class="comment-view-container">
     <div class="comment-box">
-        <ng-template *ngFor="let comment of comments">
-            <div>
+        <ng-template *ngIf="comments != undefined; else empty">
+            <div *ngFor="let comment of comments">
                 <p>{{comment}}</p>
             </div>
         </ng-template>
+
+        <ng-template #empty>
+            <div><p>No Comments</p></div>
+        </ng-template>
     </div>
 
-    <div>
+    <div class="comment-input">
         <form #f="ngForm">
-            <input type="text" name="comment" placeholder="Say something..."/>
+            <input type="text" name="comment" placeholder="Say something..." ngModel/>
+            <button type="submit" (click)="addComment(f.value.comment)" [disabled]="comments == undefined">Submit</button>
         </form>
     </div>
 

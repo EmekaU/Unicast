@@ -76,7 +76,7 @@ export class PodcastService{
 
   createPodcast(data){
     // data should be url, title, etc.
-    return this.http.post<JSON>(`${URL}/podcast/create`, data)
+    return this.http.post<[JSON]>(`${URL}/podcast/create`, data)
   }
 
   getPodcastsBelongingTo(username: string){
@@ -85,6 +85,7 @@ export class PodcastService{
 
   addComments(message: string, podcast_id: number ){
     let data = {'message': message, 'podcast_id': podcast_id}
+    console.log(data)
     return this.http.post<JSON>(`${URL}/podcast/comment/add`, data);
   }
 
