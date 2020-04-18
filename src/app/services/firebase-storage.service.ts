@@ -7,7 +7,6 @@ import { Observable, BehaviorSubject, Subject } from 'rxjs';
 })
 export class FirebaseStorageService {
 
-  progressReport = new BehaviorSubject(new Observable<number>());
   forwardUrl = new Subject();
   constructor(private firebaseStore: AngularFireStorage) { }
 
@@ -23,9 +22,8 @@ export class FirebaseStorageService {
     uploadTask.task.then(function(snapshot){
       console.log(snapshot);
       storageRef.getDownloadURL().subscribe( (data) =>{
-        console.log(data);
+        this.forwardUrl(data)
       });
     });
   }
-
 }
