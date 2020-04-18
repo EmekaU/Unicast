@@ -5,6 +5,7 @@ import { Subscription } from 'rxjs';
 import { UserAPIService } from 'src/app/services/unicast-api.service';
 import { ImageUtil } from 'src/app/utilities/image-util';
 import { AuthService } from "src/app/services/auth.service";
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-user-profile',
@@ -21,7 +22,9 @@ export class UserProfileComponent implements OnInit {
   navigated: boolean;
   subscription: Subscription;
 
-  constructor(private userService: UserService, private router: Router, private route: ActivatedRoute, private apiUser: UserAPIService, private imgUtils: ImageUtil, private auth: AuthService) {
+  constructor(private userService: UserService, private router: Router, 
+    private route: ActivatedRoute, private apiUser: UserAPIService, 
+    private imgUtils: ImageUtil, private auth: AuthService, private location: Location) {
     this.navigated = router.navigated;
   }
  
@@ -57,6 +60,10 @@ export class UserProfileComponent implements OnInit {
       this.user['bio'] = data['bio'];
       this.user['email'] = data['email'];
     }
+  }
+
+  backToHub(){
+    this.location.back();
   }
 
   forwardPodcasts(){
