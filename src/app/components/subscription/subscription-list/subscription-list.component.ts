@@ -9,7 +9,7 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./subscription-list.component.scss']
 })
 export class SubscriptionListComponent implements OnInit,OnDestroy {
-
+ 
   subscriptions: [] = null;
   subscription: Subscription;
 
@@ -22,8 +22,16 @@ export class SubscriptionListComponent implements OnInit,OnDestroy {
     });
   }
 
+  redirectToUserProfile(sub: Object){
+    console.log(sub);
+    this.router.navigate([`/user-profile/${sub["id"]["subscribeToId"]}`]);
+  }
+
   ngOnDestroy(){
-    this.subscription.unsubscribe();
+    if(this.subscription != undefined && this.subscription != null){
+      this.subscription.unsubscribe();
+
+    }
   }
 
 }

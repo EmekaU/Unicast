@@ -22,7 +22,8 @@ export class HubComponent implements OnInit {
       },
 
       error => {
-        // Show Modal. Redirect to signInPage?
+        alert("User not found");
+        this.router.navigate([""]);
       },
       
       () => {

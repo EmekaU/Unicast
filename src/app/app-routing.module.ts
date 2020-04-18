@@ -11,7 +11,7 @@ import { SubscriptionListComponent } from './components/subscription/subscriptio
 import { PodcastViewComponent } from './components/podcast-view/podcast-view.component';
 
 const routes: Routes = [
-  {path: '', redirectTo: 'signup', pathMatch: 'full' },
+  {path: '', redirectTo: 'signin', pathMatch: 'full' },
   {path: 'signup', component: SignupComponent},
   {path: 'signin', component: SigninComponent},
   {path: 'hub', component: HubComponent, canActivate: [AuthGuard],

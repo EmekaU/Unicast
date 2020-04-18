@@ -57,7 +57,6 @@ export class PodcastCreationComponent implements OnInit {
           this.podService.createPodcast(podcast).pipe(
             finalize(() => this.loading = false)).subscribe(
             result => {
-              console.log(result);
               this.userService.forwardPodcasts.next(result);
               this.router.navigate(["../podcasts"]);
             },
@@ -65,6 +64,8 @@ export class PodcastCreationComponent implements OnInit {
           )
         }
         else{
+          alert('Could not create podcast. Please try again')
+          this.router.navigate(["../"]);
           console.log(`Invalid URL: ${url}`);
         }
       })

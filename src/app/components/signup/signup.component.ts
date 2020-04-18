@@ -30,12 +30,13 @@ export class SignupComponent implements OnInit {
       finalize(() => this.loading = false)).subscribe( data => {
       this.auth.saveJWTToLocalStorage(data)
       this.auth.printToken()
-      this.router.navigate(["hub"])
+      this.router.navigate(["hub/podcasts/all"])
       // route to hub or page user redirected from.
     },
     error => {
-      // Alert the User of Error
+      alert(`User ${form.value.username} already exists. Please try again with a different username`);
     },
+
     () => {
       // Call succesfully completed
     });

@@ -25,7 +25,7 @@ export class SigninComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit(): void {
-    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || 'hub';
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || 'hub/podcasts/all';
     this.auth.deleteJWTFromLocalStorage();
   }
 
