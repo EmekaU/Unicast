@@ -28,7 +28,8 @@ export class PodcastCreationComponent implements OnInit {
 
   trackProgress(){
     // TODO: Change this to just the number. Show modal until it gets to 100%;
-    this.firebaseStore.progressReport.subscribe(
+    this.firebaseStore.progressReport.pipe(
+      finalize(() => this.loading = false)).subscribe(
       data => {
         this.uploadProgress = data;
       }
@@ -52,11 +53,13 @@ export class PodcastCreationComponent implements OnInit {
     this.trackProgress();
     this.firebaseStore.forwardUrl.subscribe(
       url => {
+        console.log(url);
         if(url != null && url != ""){
           podcast["url"] = url;
-          this.podService.createPodcast(podcast).pipe(
-            finalize(() => this.loading = false)).subscribe(
+          this.podService.createPodcast(podcast).subscribe(
             result => {
+              console.log("result:")
+              console.log(result);
               this.userService.forwardPodcasts.next(result);
               this.router.navigate(["../podcasts"]);
             },

@@ -18,10 +18,10 @@ export class FirebaseStorageService {
   upload(username, title, file){
 
     var uploadTask:AngularFireUploadTask = this.getStorageRef(username, title).put(file);
-    this.progressReport.next(uploadTask.percentageChanges()) // notify podcast creation component of progress
     console.log("getting url...")
-    uploadTask.task.snapshot.ref.getDownloadURL().then( (url)=>{
-      this.forwardUrl.next(url);
-    });
+    uploadTask.then(function(snapshot){
+      console.log(snapshot.downloadURL)
+      this.forwardUrl(snapshot.downloadURL);
+    })
   }
 }
