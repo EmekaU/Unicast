@@ -1,0 +1,74 @@
+.sml-txt-gray{
+    @apply px-4;
+    @apply py-2;
+    @apply rounded;
+    @apply bg-transparent;
+    @apply text-gray-800;
+  
+  }
+
+  .sml-txt-red{
+    @apply px-4;
+    @apply py-2;
+    @apply rounded;
+    @apply bg-transparent;
+    @apply text-red-800;
+  
+  }
+
+  .btn:hover {
+    @apply bg-white;
+  }
+
+
+  .sidebar_a{
+    @apply px-5;
+    @apply py-3; 
+    @apply shadow-md;
+    @apply rounded;
+    @apply block;
+    @apply leading-normal;
+    @apply text-xs;
+    @apply font-semibold;
+  }
+
+
+  .sidebar_a:hover{
+    @apply -translate-y-1;
+    @apply border-2;
+    @apply duration-500;
+    @apply ease-in-out;
+    @apply cursor-pointer;
+    @apply bg-black;
+    @apply text-white
+  }
+
+  .sidebar_a:active{
+    @apply bg-black;
+    @apply text-white
+  }
+
+  .create_input{
+    @apply px-2;
+    @apply py-1;
+    @apply text-gray-700;
+    @apply bg-white;
+    @apply rounded;
+    @apply text-sm;
+    @apply shadow;
+    @apply outline-none;
+    
+  }
+
+  .create_label{
+    @apply px-5;
+    @apply py-3;
+    @apply rounded;
+    @apply bg-transparent;
+    @apply text-gray-900;
+    transition: 200ms;
+
+  }
+
+
+

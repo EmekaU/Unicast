@@ -1,0 +1,10 @@
+<div id="podcast-view-container" class="shadow-inner w-11/12 bg-gray-400 mt-5 m-10 mr-20
+rounded-lg text-center flex flex-row flex-wrap overflow-hidden h-full
+overflow-y-auto podcast-container">
+    <div class="podcast-list">
+        <app-podcast-card *ngFor="let podcast of podcasts" [podcast]="podcast" (click)="setCommentViewDetails(podcast)"></app-podcast-card>
+    </div>
+    <div class="comment-view">
+        <app-comment-view [comments]='currentPodcast["comments"]' [id]='currentPodcast["id"]'></app-comment-view>
+    </div>
+</div>

@@ -1,0 +1,42 @@
+<div class='flex items-center content-center justify-center'>
+  <form #f="ngForm">
+    <div class="form-group">
+      <label class="create_label" for="podcast">Podcast</label>
+      <input type="file" name="podcast" (change)="storeFile($event)" id="podcast-file" accept=".mp3, .wav" ngModel/>
+    </div>
+
+    <div class="form-group">
+      <label class="create_label" for="title">Title</label>
+      <input type="text" class="create_input w-4/5" name="title" required id="title" ngModel/>
+    </div>
+
+    <div class="form-group">
+      <label class="create_label" for="description">Description</label>
+      <textarea type="text" name="description" required id="description" ngModel
+      class="create_input w-2/3 desc" placeholder="Enter a description"></textarea>
+    </div>
+
+
+    <div class="form-group">
+      <label class="create_label" for="category">Category</label>
+      <select name="category" id="category-options" ngModel>
+          <option value="comedy">Comedy</option>
+          <option value="education">Education</option>
+          <option value="lifestyle">Lifestyle</option>
+          <option value="misc">Misc</option>
+          <option value="sports">Sports</option>
+          <option value="politics">Politics</option>
+          <option value="religion">Religion</option>
+      </select>
+    </div>
+
+    <button 
+    class="border-2 p-2 ml-5 rounded-md transition justify-center 
+    duration-500 ease-in-out bg-white hover:bg-black w-full
+    transform hover:-translate-y-0.5 hover:scale-110 hover:text-white"
+    (click)="upload(f)">Upload</button>
+    <div *ngIf="loading" class="spinner mt-5">
+    </div>
+  </form>
+  
+</div>

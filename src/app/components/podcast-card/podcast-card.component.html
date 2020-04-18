@@ -1,0 +1,13 @@
+<div class="podcast-card">
+    <div class="podcast-info">
+      <h4 class="podcast-title"> {{ podcast["title"] }} - {{ podcast["category" ]}}</h4>
+      <div class="podcast-creator">- by <a>creator</a></div>
+      <hr>
+      <p class="podcast-description">{{ podcast["description"] }}</p>
+    </div>
+    <div class="podcast-btn">
+      <audio controls>
+        <source [src]='podcast["url"]'>
+      </audio>
+    </div>
+</div>

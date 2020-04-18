@@ -1,0 +1,18 @@
+<div class="hub-view h-auto">
+  <div class="hub-header">
+    <app-search-bar></app-search-bar>
+    <div *ngIf="user != null" (click)="redirectToUserProfile()" class="img_wrap">
+      <img [src]="getImgPath()" alt="profile"/>
+    </div>
+  </div>
+  <div class='rounded-lg w-full'>
+    <div class="flex flex-row">
+      <div>
+        <app-sidebar></app-sidebar>
+      </div>
+      <div class='flex-1'>
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
+</div>

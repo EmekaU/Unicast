@@ -1,0 +1,29 @@
+<div class="body mt-20">
+<form (ngSubmit)="onSignUp(f)" #f="ngForm" class="form-card shadow-lg align-top">
+                <div class="relative w-full mb-3 form-group">
+                    <label class="block uppercase text-black text-xs font-bold mb-2" for="grid-u username">Username</label>
+                    <input type="text" name="username" id="username" class="form-control px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:shadow-outline w-full" placeholder="Username" required style="transition: all 0.15s ease 0s;" ngModel />
+                </div>
+                <div class="relative w-full mb-5 form-group">
+                    <label for="email" class="block uppercase text-black text-xs font-bold mb-2">Email</label>
+                    <input type="email" name="email" id="email" class="px-4 py-4 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:shadow-inner w-full" placeholder="Email" required style="transition: all 0.15s ease 0s;" ngModel email #email ="ngModel" />
+                </div>
+                <div class="relative w-full mb-3 form-group">
+                    <label for="password" class="block uppercase text-black text-xs font-bold mb-2">Password</label>
+                    <input type="password" name="password" class="px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:shadow-outline w-full" placeholder="Password" required style="transition: all 0.15s ease 0s;" ngModel password />
+                </div>
+                <div class="text-center mt-6">
+                    <button class="auth-btn hover:text-black hover:bg-white text-white font-bold py-2 px-4
+                                rounded h-10 rounded shadow hover:black focus:shadow-outline mr-1 mb-1 w-full" type="submit" style="transition: all 0.15s ease 0s;" [disabled]="!f.valid">
+                        Sign Up
+                    </button>
+                    <div *ngIf="!email.valid&&email.touched">
+                        <span class='sml-txt-gray'>Please Enter a valid Email</span>
+                    </div>
+                    <div *ngIf="loading" class="spinner mt-5">
+                    </div>
+                </div>
+                <div class="text-center p-4"> Already signed in? Please <span class="link"><a [routerLink]="['/signin']">login</a></span></div>
+</form>
+
+<div>

@@ -1,0 +1,47 @@
+.hide{
+  display: none;
+}
+.img_wrap{
+  background-color: #eef;
+  border-radius: 65px;
+  border: 2px #eef solid;
+}
+.img_wrap img{
+  width: 128px;
+}
+
+.img_wrap, .user_details{
+  vertical-align: middle;
+  display: inline-block;
+  margin-right: 30px;
+}
+
+.user-edit-view{
+  text-align: center;
+  margin: 0 auto;
+  padding: 10px 0px;
+  width: 50%;
+}
+
+input{
+  margin: 10px 0px;
+}
+
+button.save{
+  background-color: #cccccc;
+  border: 2px solid #eee;
+}
+.save:hover{
+  color: #000000;
+}
+
+button.cancel{
+  background-color: #ccc;
+  border: 2px solid #ffffff;
+}
+
+.btns button{
+  width: 40%;
+  margin: 10px;
+}
+

@@ -1,0 +1,48 @@
+<div class="user_profile">
+  <!--<div class="back-link"><h6>Back</h6></div>-->
+
+  <section class="profile_card">
+    <div *ngIf="editMode == false; else editView">
+      <div class="img_wrap">
+        <img [src]="user['photo']"/>
+      </div>
+
+      <div class="user_details">
+        <div>
+          <h2 class="text-2xl">{{ user['username'] }}</h2>
+          <p class="text-lg">{{ user['bio'] }}</p>
+        </div>
+
+        <div class="profile-btns" *ngIf="user != null">
+          <button type="button" *ngIf="isLoggedInUser; else subscribe" (click)="editMode = true">EDIT PROFILE</button>
+          <ng-template #subscribe>
+            <button *ngIf="isSubscribed;" (click)="toggleSubscription()">UNSUBSCRIBE</button>
+            <button *ngIf="!isSubscribed;"(click)="toggleSubscription()">SUBSCRIBE</button> <!--Add Pipe to make uppercase-->
+          </ng-template>
+        </div>
+      </div>
+    </div>
+    <ng-template #editView>
+      <app-user-details-edit [userData]="user" (userDataChange)="modifyUser($event)"></app-user-details-edit>
+    </ng-template>
+  </section>
+
+  <section class="user_link_options" *ngIf="editMode == false">
+    <div class="nav">
+      <ul class="sub-list">
+        <li class="list-item" routerLinkActive="active">
+          <a [routerLink]="['podcasts']">MY PODCASTS</a>
+        </li>
+        <li class="list-item" *ngIf="isLoggedInUser" routerLinkActive="active">
+          <a [routerLink]="['create']">CREATE PODCAST</a>
+        </li>
+        <li class="list-item" *ngIf="isLoggedInUser" routerLinkActive="active">
+          <a [routerLink]="['subscriptions']">SUBSCRIPTIONS</a>
+        </li>
+      </ul>
+    </div>
+  </section>
+  <section *ngIf="editMode == false">
+    <router-outlet></router-outlet>
+  </section>
+</div>

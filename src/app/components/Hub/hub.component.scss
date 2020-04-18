@@ -1,0 +1,22 @@
+.hub-view{
+  padding-top: 35px;
+  background-color: #cccccc;
+}
+
+.hub-header{
+  text-align: center;
+}
+
+.img_wrap{
+  background-color: transparent;
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 20px;
+  cursor: pointer;
+}
+
+.img_wrap img{
+  max-width: 55px;
+  margin-top: 0;
+  border-radius: 10%;
+}
