@@ -1,7 +1,8 @@
 <div class='flex flex-wrap'>
 <ul class="subscriptions">
-    <li *ngFor="let sub of subscriptions"></li>
-    <span>{{sub}}</span>
+    <li *ngFor="let sub of subscriptions">
+        <span>{{sub["id"]["subscribeToId"]}}</span>
+    </li>
     
 </ul>
 
